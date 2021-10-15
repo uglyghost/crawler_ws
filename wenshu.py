@@ -61,6 +61,7 @@ class wenshu_class:
         chrome_options = webdriver.ChromeOptions()
         # 让浏览器不显示自动化测试
         chrome_options.add_argument('disable-infobars')
+        chrome_options.add_experimental_option("detach", True)
         # 设置window系统下的chrome驱动程序
         self.chrome = webdriver.Chrome(executable_path='./driver/chromedriver.exe', options=chrome_options)
 
@@ -109,18 +110,22 @@ class wenshu_class:
             self.chrome.find_element_by_class_name('code-btn').click()
             sleep(random.randint(3, 5))
 
-        # 因为登录框在iframe框中，需要先切换到iframe中
-        self.chrome.switch_to.frame('contentIframe')
-        self.chrome.find_element_by_xpath('//*[@id="root"]/div/form/div[1]/div[1]/div/div/div/input').send_keys(self.username)   # 账号
-        self.chrome.find_element_by_xpath('//*[@id="root"]/div/form/div[1]/div[2]/div/div/div/input').send_keys(self.password)   # 密码
-        sleep(random.randint(3, 5))
+        try:
+            # 因为登录框在iframe框中，需要先切换到iframe中
+            self.chrome.switch_to.frame('contentIframe')
+            self.chrome.find_element_by_xpath('//*[@id="root"]/div/form/div[1]/div[1]/div/div/div/input').send_keys(self.username)   # 账号
+            self.chrome.find_element_by_xpath('//*[@id="root"]/div/form/div[1]/div[2]/div/div/div/input').send_keys(self.password)   # 密码
+            sleep(random.randint(3, 4))
 
-        # 确认登录
-        self.chrome.find_element_by_xpath('//*[@id="root"]/div/form/div/div[3]/span').click()                                    # 点击登录
-        sleep(random.randint(3, 5))
+            # 确认登录
+            self.chrome.find_element_by_xpath('//*[@id="root"]/div/form/div/div[3]/span').click()                                    # 点击登录
+            sleep(random.randint(3, 4))
 
-        # 获取cookies
-        cookie_data = self.chrome.get_cookies()                                                                                  # 获取cookie
+            # 获取cookies
+            cookie_data = self.chrome.get_cookies()                                                                                  # 获取cookie
+        except:
+            self.chrome.quit()
+            pass
 
         # cookies数据处理返回
         json_cookie = ''

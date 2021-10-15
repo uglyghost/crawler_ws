@@ -6,14 +6,16 @@ from pandas import json_normalize
 
 import sys
 sys.path.append("..")
-from settings import ws_setting
 
 client = MongoClient('localhost', 27017)
 mongodb = client.wenshu
 
 class GetByDate:
-    def __init__(self):
-        query = {'_id': ObjectId(ws_setting.BREAK_POINT)}
+    def __init__(self, ws_break_point, ws_user_id):
+        self.break_point = ws_break_point
+        self.user_id = ws_user_id
+
+        query = {'_id': ObjectId(self.break_point)}
         tmp = mongodb['ws_tmp'].find_one(query)
         self.datetime = tmp['datetime']
         self.province = tmp['province']
@@ -53,7 +55,7 @@ class GetByDate:
 
     def save_check_point(self, province, datetime, pagenum):
 
-        query = {'_id': ObjectId(ws_setting.BREAK_POINT)}
+        query = {'_id': ObjectId(self.break_point)}
         tmp = mongodb['ws_tmp'].find_one(query)
         tmp['province'] = province
         tmp['datetime'] = datetime
@@ -67,7 +69,7 @@ class GetByDate:
 
     def load_check_point(self):
 
-        query = {'_id': ObjectId(ws_setting.BREAK_POINT)}
+        query = {'_id': ObjectId(self.break_point)}
         tmp = mongodb['ws_tmp'].find_one(query)
         self.datetime = tmp['datetime']
         self.province = tmp['province']
@@ -97,7 +99,7 @@ class GetByDate:
 
     def getUserByID(self):
 
-        query = {'_id': ObjectId(ws_setting.USER_ID)}
+        query = {'_id': ObjectId(self.user_id)}
         tmp = mongodb['ws_user'].find_one(query)
         result = {
             'username': tmp['username'],

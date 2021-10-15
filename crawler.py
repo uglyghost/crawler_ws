@@ -5,12 +5,17 @@ from time import sleep
 import random
 from wenshu import wenshu_class
 from database.conn_mongoDB import GetByDate
-from settings import ws_setting
+import argparse
 
 if __name__ == '__main__':
 
+    parser = argparse.ArgumentParser(description='manual to this script')
+    parser.add_argument('--break-point', type=str, default=None)
+    parser.add_argument('--user-id', type=str, default=None)
+    args = parser.parse_args()
+
     # 数据库相关基本类
-    database = GetByDate()
+    database = GetByDate(args.break_point, args.user_id)
     check_point = database.load_check_point()
 
     # 读取账户用户名和密码
