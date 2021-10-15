@@ -7,7 +7,23 @@ from pandas import json_normalize
 import sys
 sys.path.append("..")
 
-client = MongoClient('localhost', 27017)
+# 导入需要的模块，若没有需要去pip在线下载“pymongo”
+
+from pymongo import MongoClient
+
+user = 'wenshu'
+pwd = '123456'
+host = '10.220.139.140'
+port = '27017'
+db_name = 'wenshu'
+
+uri = "mongodb://%s:%s@%s" % (user, pwd, host + ":" + port + "/" + db_name)
+
+# 连接数据库
+
+client = MongoClient(uri)
+
+# client = MongoClient('localhost', 27017)
 mongodb = client.wenshu
 
 class GetByDate:

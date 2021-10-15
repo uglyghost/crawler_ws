@@ -16,16 +16,22 @@ import torchvision.transforms as transforms
 from PIL import Image
 import captcha.one_hot_encoding as ohe
 from settings import ws_setting
+import random
+import string
 
 class wenshu_class:
     def __init__(self, ws_username, ws_password):
         # 配置请求数据包头
+        random_str = ''.join(random.choice(string.digits) for _ in range(1))
+        random_str = "181029CR4M5A62CH"
+        print(random_str)
+
         self.headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36',
             'Host': 'wenshu.court.gov.cn',
             'Origin': 'https://wenshu.court.gov.cn',
             'sec-ch-ua': 'Google Chrome";v="94", "Chromium";v="94", ";Not A Brand";v="99',
-            'Referer': 'https://wenshu.court.gov.cn/website/wenshu/181217BMTKHNT2W0/index.html?',
+            'Referer': 'https://wenshu.court.gov.cn/website/wenshu/' + random_str + '/index.html?',
             'Accept': 'application/json, text/javascript, */*; q=0.01',
             'Accept-Encoding': 'gzip, deflate, br',
             'Accept-Language': 'en-US,en;q=0.9',
