@@ -18,10 +18,8 @@ from settings import ws_setting
 import random
 import string
 
-from database.conn_mongoDB import GetByDate
-
 class wenshu_class:
-    def __init__(self, ws_username, ws_password, ws_proxyMeta):
+    def __init__(self, ws_username, ws_password, ws_proxyHost, ws_proxyPort):
         # 配置请求数据包头
         random_str = ''.join(random.choice(string.digits) for _ in range(1))
         random_str = "181029CR4M5A62CH"
@@ -64,17 +62,36 @@ class wenshu_class:
         # 加载需要执行的js文件 rest.q4w接口返回数据被加密 需要解密
         self.ctx = node.compile(open('./js/decrypt_content.js', encoding='utf-8').read())
 
+        proxyMeta = "http://%(host)s:%(port)s" % {
+            "host": ws_proxyHost,
+            "port": ws_proxyPort,
+        }
+
+        self.proxies = {
+            "http": proxyMeta,
+        }
+
+        proxyType = 'http'  # socks5
+
+        # 代理隧道验证信息
+        service_args = [
+            "--proxy-type=%s" % proxyType,
+            "--proxy=%(host)s:%(port)s" % {
+                "host": ws_proxyHost,
+                "port": ws_proxyPort,
+            }
+        ]
+
         # 初始化chrome驱动配置
         chrome_options = webdriver.ChromeOptions()
         # 让浏览器不显示自动化测试
         chrome_options.add_argument('disable-infobars')
         chrome_options.add_experimental_option("detach", True)
         # 设置window系统下的chrome驱动程序
-        self.chrome = webdriver.Chrome(executable_path='./driver/chromedriver.exe', options=chrome_options)
+        self.chrome = webdriver.Chrome(executable_path='./driver/chromedriver.exe', options=chrome_options, service_args=service_args)
 
-        self.proxies = {
-            "http": ws_proxyMeta,
-        }
+        # 要访问的目标页面
+        # driver = webdriver.PhantomJS(service_args=service_args)
 
     # 加密内容解密
     def decrypt_response(self, ws_content):
