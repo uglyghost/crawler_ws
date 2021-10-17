@@ -21,8 +21,15 @@ if __name__ == '__main__':
     # 读取账户用户名和密码
     userInf = database.getUserByID()
 
+    # 设置代理
+    proxyHost, proxyPort = database.getIPAddress()
+    proxyMeta = "http://%(host)s:%(port)s" % {
+        "host": proxyHost,
+        "port": proxyPort,
+    }
+
     # 爬虫相关功能基本类
-    wenshu = wenshu_class(ws_username=userInf['username'], ws_password=userInf['password'])
+    wenshu = wenshu_class(ws_username=userInf['username'], ws_password=userInf['password'], ws_proxyMeta = proxyMeta)
     # 获取登陆后的Cookie
     json_cookie = wenshu.send_login()
     # 退出selenium浏览器自动化
@@ -99,7 +106,6 @@ if __name__ == '__main__':
                 if len(doc_list) < 15:
                     relWenshu = None
 
-
                 for index, value in enumerate(doc_list):
 
                     doc_ID = value['rowkey']
@@ -142,7 +148,7 @@ if __name__ == '__main__':
                             break
 
                     database.insert_data(response)
-                    sleep(random.randint(2, 4))
+                    sleep(random.randint(3, 5))
 
                 # 切换到下一页
                 pageNum = pageNum + 1
@@ -156,7 +162,7 @@ if __name__ == '__main__':
             pageNum = 1
             # 保存check point
             database.save_check_point(province, start_date, pageNum)
-            sleep(random.randint(3, 5))
+            sleep(random.randint(2, 4))
 
         # 切换到下一天
         start_date = database.next_date()

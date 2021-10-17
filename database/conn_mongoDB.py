@@ -6,8 +6,10 @@ from pandas import json_normalize
 
 import sys
 sys.path.append("..")
+import settings.ws_setting as ws_settings
+import random
 
-# 导入需要的模块，若没有需要去pip在线下载“pymongo”
+# 导入需要的模块，若没有需要去pip在线下载“pymongo”s
 
 from pymongo import MongoClient
 
@@ -122,3 +124,16 @@ class GetByDate:
             'password': tmp['password']
         }
         return result
+
+    def getIPAddress(self):
+
+        query = {'_id': ObjectId(ws_settings.PROXY_LIST)}
+        tmp = mongodb['ws_ip_list'].find_one(query)
+        tmp_proxy = tmp['data'][random.randint(0, len(tmp['data']))]
+
+        IP = tmp_proxy['IP']
+        Port = tmp_proxy['Port']
+
+        print('IP: '+ str(IP) + ' ' + "Port: " + str(Port))
+
+        return IP, Port

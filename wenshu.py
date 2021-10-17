@@ -1,6 +1,5 @@
 import requests
 import execjs
-import random
 import json
 from selenium import webdriver
 from time import sleep
@@ -19,8 +18,10 @@ from settings import ws_setting
 import random
 import string
 
+from database.conn_mongoDB import GetByDate
+
 class wenshu_class:
-    def __init__(self, ws_username, ws_password):
+    def __init__(self, ws_username, ws_password, ws_proxyMeta):
         # 配置请求数据包头
         random_str = ''.join(random.choice(string.digits) for _ in range(1))
         random_str = "181029CR4M5A62CH"
@@ -70,6 +71,10 @@ class wenshu_class:
         chrome_options.add_experimental_option("detach", True)
         # 设置window系统下的chrome驱动程序
         self.chrome = webdriver.Chrome(executable_path='./driver/chromedriver.exe', options=chrome_options)
+
+        self.proxies = {
+            "http": ws_proxyMeta,
+        }
 
     # 加密内容解密
     def decrypt_response(self, ws_content):
@@ -144,9 +149,10 @@ class wenshu_class:
 
     # 发送post请求
     def send_post_request(self, ws_params):
+
         # 尝试请求获取数据
         try:
-            response = self.request.post(url=self.url, headers=self.headers, data=ws_params).json()       # 请求可能会出错，多次请求可以获取需要内容
+            response = self.request.post(url=self.url, headers=self.headers, proxies=self.proxies, data=ws_params).json()       # 请求可能会出错，多次请求可以获取需要内容
             # response['success'] = True
         except:
             # 请求返回的数据格式报错，尝试检查
