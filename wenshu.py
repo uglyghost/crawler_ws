@@ -62,6 +62,7 @@ class wenshu_class:
         # self.codeURL = 'https://wenshu.court.gov.cn/waf_captcha/'
         # 建立请求回话
         self.request = requests.session()
+
         # 初始化execjs
         node = execjs.get()
         # 加载需要执行的js文件 rest.q4w接口返回数据被加密 需要解密
@@ -81,20 +82,33 @@ class wenshu_class:
         # 代理隧道验证信息
         service_args = [
             "--proxy-type=%s" % proxyType,
-            "--proxy=%(host)s:%(port)s" % {
+            "--proxy-server=%(host)s:%(port)s" % {
                 "host": ws_proxyHost,
                 "port": ws_proxyPort,
             }
         ]
+
+        p = {
+            'proxyType': 'MANUAL',
+            'httpProxy': proxyMeta,
+            'noProxy': ''
+        }
+
+        self.request.proxies = proxyMeta
 
         # 初始化chrome驱动配置
         chrome_options = webdriver.ChromeOptions()
         # 让浏览器不显示自动化测试
         chrome_options.add_argument('disable-infobars')
         chrome_options.add_experimental_option("detach", False)
+        chrome_options.set_capability("proxy", p)
         # 设置window系统下的chrome驱动程序
         self.chrome = webdriver.Chrome(executable_path='./driver/chromedriver.exe', options=chrome_options,
                                        service_args=service_args)
+
+        #p = self.chrome.get('http://icanhazip.com')
+        #print(p)
+        #sleep(random.randint(10))
 
         #self.chrome = webdriver.Chrome(options=chrome_options, service_args=service_args)
 
@@ -122,6 +136,10 @@ class wenshu_class:
         # 模拟登陆获取到登陆的Cookie
         login_url = 'https://wenshu.court.gov.cn/website/wenshu/181010CARHS5BS3C/index.html?open=login'
         response = self.chrome.get(url=login_url)
+
+        # p = self.chrome.get('http://icanhazip.com')
+        # print(p)
+        # sleep(random.randint(10))
 
         # 页面加载不完全，尝试刷新解决该问题
         self.chrome.refresh()
@@ -179,11 +197,15 @@ class wenshu_class:
 
     # 发送post请求
     def send_post_request(self, ws_params):
-
+        # print(self.proxies)
+        # print("11")
+        # p = self.request.get('http://httpbin.org/ip', headers=self.headers, proxies=self.proxies)
+        # print(p.text)
+        # sleep(random.randint(10))
         # 尝试请求获取数据
         try:
-            # response = self.request.post(url=self.url, headers=self.headers, proxies=self.proxies, data=ws_params).json()       # 请求可能会出错，多次请求可以获取需要内容
-            response = self.request.post(url=self.url, headers=self.headers, data=ws_params).json()
+            response = self.request.post(url=self.url, headers=self.headers, proxies=self.proxies, data=ws_params).json()       # 请求可能会出错，多次请求可以获取需要内容
+            #response = self.request.post(url=self.url, headers=self.headers, data=ws_params).json()
             # response['success'] = True
         except:
             # 请求返回的数据格式报错，尝试检查
