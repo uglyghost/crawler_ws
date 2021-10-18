@@ -131,8 +131,8 @@ class GetByDate:
         tmp = mongodb['ws_ip_list'].find_one(query)
         tmp_proxy = tmp['data'][random.randint(0, len(tmp['data']))]
 
-        IP = tmp_proxy['IP']
-        Port = tmp_proxy['Port']
+        IP = tmp_proxy['ip']
+        Port = tmp_proxy['port']
 
         print('IP: '+ str(IP) + ' ' + "Port: " + str(Port))
 

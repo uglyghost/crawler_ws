@@ -29,7 +29,7 @@ if __name__ == '__main__':
     # 获取登陆后的Cookie
     json_cookie = wenshu.send_login()
     # 退出selenium浏览器自动化
-    wenshu.chrome.quit()
+    wenshu.chrome.close()
     wenshu.headers['Cookie'] = json_cookie
 
     # 获取断点信息
@@ -86,10 +86,11 @@ if __name__ == '__main__':
                             try:
                                 doc_list = response['queryResult']['resultList'][:]
                             except:
+                                wenshu.headers['Cookie'] = ""
                                 # 获取登陆后的Cookie
                                 json_cookie = wenshu.send_login()
                                 # 退出selenium浏览器自动化
-                                wenshu.chrome.quit()
+                                wenshu.chrome.close()
                                 wenshu.headers['Cookie'] = json_cookie
                                 # 重新获取数据
                                 response = wenshu.send_post_request(params)
@@ -128,10 +129,11 @@ if __name__ == '__main__':
                             while True:
                                 try:
                                     if response['code'] == 9:
+                                        wenshu.headers['Cookie'] = ""
                                         # 获取登陆后的Cookie
                                         json_cookie = wenshu.send_login()
                                         # 退出selenium浏览器自动化
-                                        wenshu.chrome.quit()
+                                        wenshu.chrome.close()
                                         wenshu.headers['Cookie'] = json_cookie
                                         # 重新获取数据
                                         response = wenshu.send_post_request(params)

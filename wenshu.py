@@ -17,16 +17,21 @@ import captcha.one_hot_encoding as ohe
 from settings import ws_setting
 import random
 import string
+from fake_useragent import UserAgent
+
 
 class wenshu_class:
     def __init__(self, ws_username, ws_password, ws_proxyHost, ws_proxyPort):
         # 配置请求数据包头
         random_str = ''.join(random.choice(string.digits) for _ in range(1))
-        random_str = "181029CR4M5A62CH"
+        random_str = "181217BMTKHNT2W0"
         print(random_str)
+        ua = UserAgent(verify_ssl=False)
+        print(ua.random)
 
         self.headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36',
+            #'User-Agent':  ua.random,
             'Host': 'wenshu.court.gov.cn',
             'Origin': 'https://wenshu.court.gov.cn',
             'sec-ch-ua': 'Google Chrome";v="94", "Chromium";v="94", ";Not A Brand";v="99',
@@ -86,9 +91,12 @@ class wenshu_class:
         chrome_options = webdriver.ChromeOptions()
         # 让浏览器不显示自动化测试
         chrome_options.add_argument('disable-infobars')
-        chrome_options.add_experimental_option("detach", True)
+        chrome_options.add_experimental_option("detach", False)
         # 设置window系统下的chrome驱动程序
-        self.chrome = webdriver.Chrome(executable_path='./driver/chromedriver.exe', options=chrome_options, service_args=service_args)
+        self.chrome = webdriver.Chrome(executable_path='./driver/chromedriver.exe', options=chrome_options,
+                                       service_args=service_args)
+
+        #self.chrome = webdriver.Chrome(options=chrome_options, service_args=service_args)
 
         # 要访问的目标页面
         # driver = webdriver.PhantomJS(service_args=service_args)
@@ -108,6 +116,9 @@ class wenshu_class:
 
     # 模拟登录获取cookie
     def send_login(self):
+
+        #self.headers['User-Agent'] = self.agentPools[random.randint(0, 3)]
+        #print(self.headers['User-Agent'])
         # 模拟登陆获取到登陆的Cookie
         login_url = 'https://wenshu.court.gov.cn/website/wenshu/181010CARHS5BS3C/index.html?open=login'
         response = self.chrome.get(url=login_url)
@@ -152,7 +163,7 @@ class wenshu_class:
             # 获取cookies
             cookie_data = self.chrome.get_cookies()                                                                                  # 获取cookie
         except:
-            self.chrome.quit()
+            self.chrome.close()
             pass
 
         # cookies数据处理返回
@@ -160,8 +171,10 @@ class wenshu_class:
         for cookie in cookie_data:
             name = cookie['name']
             value = cookie['value']
-            if (name == 'UM_distinctid' or name == 'SESSION'):
-                json_cookie += name + '=' + value + '; '
+            # if (name == 'UM_distinctid' or name == 'SESSION'):
+            json_cookie += name + '=' + value + '; '
+
+        print(json_cookie)
         return json_cookie
 
     # 发送post请求
@@ -169,7 +182,8 @@ class wenshu_class:
 
         # 尝试请求获取数据
         try:
-            response = self.request.post(url=self.url, headers=self.headers, proxies=self.proxies, data=ws_params).json()       # 请求可能会出错，多次请求可以获取需要内容
+            # response = self.request.post(url=self.url, headers=self.headers, proxies=self.proxies, data=ws_params).json()       # 请求可能会出错，多次请求可以获取需要内容
+            response = self.request.post(url=self.url, headers=self.headers, data=ws_params).json()
             # response['success'] = True
         except:
             # 请求返回的数据格式报错，尝试检查
