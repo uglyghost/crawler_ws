@@ -117,11 +117,15 @@ class GetByDate:
 
     def getUserByID(self):
 
-        query = {'_id': ObjectId(self.user_id)}
-        tmp = mongodb['ws_user'].find_one(query)
+        # query = {'_id': ObjectId(self.user_id)}
+        # tmp = mongodb['ws_user'].find_one(query)
+        tmp = list(mongodb['ws_user'].aggregate([{"$sample": {"size": 1}}]))
+        print(tmp[0])
+        for i in tmp:
+            print(i)
         result = {
-            'username': tmp['username'],
-            'password': tmp['password']
+            'username': tmp[0]['username'],
+            'password': tmp[0]['password']
         }
         return result
 

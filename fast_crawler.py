@@ -123,7 +123,7 @@ if __name__ == '__main__':
                 pageNum = pageNum + 1
                 # 保存check point
                 database.save_check_point(province, start_date, pageNum)
-                sleep(random.randint(3, 5) + random.random())
+                sleep(random.randint(10, 15) + random.random())
 
             # 切换到下一个城市
             province = database.next_province()

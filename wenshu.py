@@ -181,7 +181,7 @@ class wenshu_class:
             # 获取cookies
             cookie_data = self.chrome.get_cookies()                                                                                  # 获取cookie
         except:
-            # self.chrome.close()
+            self.chrome.quit()
             pass
 
         # cookies数据处理返回
@@ -199,9 +199,9 @@ class wenshu_class:
     def send_post_request(self, ws_params):
         # print(self.proxies)
         # print("11")
-        # p = self.request.get('http://httpbin.org/ip', headers=self.headers, proxies=self.proxies)
-        # print(p.text)
-        # sleep(random.randint(10))
+        #p = self.request.get('http://httpbin.org/ip', headers=self.headers, proxies=self.proxies)
+        #print(p.text)
+        #sleep(random.randint(10))
         # 尝试请求获取数据
         try:
             response = self.request.post(url=self.url, headers=self.headers, proxies=self.proxies, data=ws_params).json()       # 请求可能会出错，多次请求可以获取需要内容

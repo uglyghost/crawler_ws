@@ -29,7 +29,7 @@ if __name__ == '__main__':
     # 获取登陆后的Cookie
     json_cookie = wenshu.send_login()
     # 退出selenium浏览器自动化
-    wenshu.chrome.close()
+    wenshu.chrome.quit()
     wenshu.headers['Cookie'] = json_cookie
 
     # 获取断点信息
@@ -91,7 +91,7 @@ if __name__ == '__main__':
                                 # 获取登陆后的Cookie
                                 json_cookie = wenshu.send_login()
                                 # 退出selenium浏览器自动化
-                                wenshu.chrome.close()
+                                wenshu.chrome.quit()
                                 wenshu.headers['Cookie'] = json_cookie
                                 # 重新获取数据
                                 response = wenshu.send_post_request(params)
@@ -136,7 +136,7 @@ if __name__ == '__main__':
                                         # 获取登陆后的Cookie
                                         json_cookie = wenshu.send_login()
                                         # 退出selenium浏览器自动化
-                                        wenshu.chrome.close()
+                                        wenshu.chrome.quit()
                                         wenshu.headers['Cookie'] = json_cookie
                                         # 重新获取数据
                                         response = wenshu.send_post_request(params)
@@ -149,7 +149,7 @@ if __name__ == '__main__':
                             break
 
                     database.insert_data(response)
-                    sleep(random.randint(3, 5))
+                    sleep(random.randint(10, 15))
 
                 # 切换到下一页
                 pageNum = pageNum + 1
