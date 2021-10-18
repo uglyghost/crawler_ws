@@ -104,52 +104,20 @@ if __name__ == '__main__':
                 if len(doc_list) < 15:
                     relWenshu = None
 
-                #print(doc_list)
-
                 for index, value in enumerate(doc_list):
-
-                    doc_ID = value['rowkey']
-                    ciphertext = wenshu.ctx.eval("cipher()")
-                    verification_token = wenshu.ctx.eval("random(24)")
-                    params = {
-                        'docId': doc_ID,
-                        'ciphertext': ciphertext,
-                        'cfg': 'com.lawyee.judge.dc.parse.dto.SearchDataDsoDTO@docInfoSearch',
-                        '__RequestVerificationToken': verification_token
-                    }
-
-                    # response = wenshu.send_post_request(params)
-
-                    # 考虑可能请求出现错误的情况
-                    while True:
-                        try:
-                            response = wenshu.send_post_request(params)
-                        except:
-                            sleep(random.randint(2, 4))
-                            continue
+                    save_data = {}
+                    for key_tmp in value.keys():
+                        # print(key_tmp)
+                        if key_tmp != "rowkey":
+                            save_data["s"+key_tmp] = value[key_tmp]
                         else:
-                            # 可能返回无权限访问
-                            while True:
-                                try:
-                                    if response['code'] == 9:
-                                        wenshu.headers['Cookie'] = ""
-                                        # 获取登陆后的Cookie
-                                        json_cookie = wenshu.send_login()
-                                        # 退出selenium浏览器自动化
-                                        wenshu.chrome.close()
-                                        wenshu.headers['Cookie'] = json_cookie
-                                        # 重新获取数据
-                                        response = wenshu.send_post_request(params)
-                                    else:
-                                        # 跳出无权访问循环
-                                        break
-                                except:
-                                    break
-                            # 跳出访问出错循环
-                            break
+                            save_data["s5"] = value[key_tmp]
 
-                    database.insert_data(response)
-                    sleep(random.randint(3, 5))
+                    print(save_data)
+                    database.insert_data(save_data)
+
+                    # database.insert_data(save_data)
+                    # sleep(random.randint(3, 5))
 
                 # 切换到下一页
                 pageNum = pageNum + 1

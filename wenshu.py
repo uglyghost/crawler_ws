@@ -143,27 +143,27 @@ class wenshu_class:
 
             # 填写验证码
             self.chrome.find_element_by_name('captcha').send_keys(code)
-            sleep(random.randint(3, 5))
+            sleep(random.randint(1, 2))
 
             # 确认提交验证码
             self.chrome.find_element_by_class_name('code-btn').click()
-            sleep(random.randint(3, 5))
+            sleep(random.randint(1, 2))
 
         try:
             # 因为登录框在iframe框中，需要先切换到iframe中
             self.chrome.switch_to.frame('contentIframe')
             self.chrome.find_element_by_xpath('//*[@id="root"]/div/form/div[1]/div[1]/div/div/div/input').send_keys(self.username)   # 账号
             self.chrome.find_element_by_xpath('//*[@id="root"]/div/form/div[1]/div[2]/div/div/div/input').send_keys(self.password)   # 密码
-            sleep(random.randint(3, 4))
+            sleep(random.randint(1, 2))
 
             # 确认登录
             self.chrome.find_element_by_xpath('//*[@id="root"]/div/form/div/div[3]/span').click()                                    # 点击登录
-            sleep(random.randint(3, 4))
+            sleep(random.randint(1, 2))
 
             # 获取cookies
             cookie_data = self.chrome.get_cookies()                                                                                  # 获取cookie
         except:
-            self.chrome.close()
+            # self.chrome.close()
             pass
 
         # cookies数据处理返回
