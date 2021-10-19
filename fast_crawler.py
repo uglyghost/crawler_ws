@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-
+import sys
 from time import sleep
 import random
 from wenshu import wenshu_class
@@ -8,6 +8,8 @@ from database.conn_mongoDB import GetByDate
 import argparse
 
 if __name__ == '__main__':
+
+    break_check = 0
 
     parser = argparse.ArgumentParser(description='manual to this script')
     parser.add_argument('--break-point', type=str, default=None)
@@ -124,6 +126,11 @@ if __name__ == '__main__':
                 # 保存check point
                 database.save_check_point(province, start_date, pageNum)
                 sleep(random.randint(10, 15) + random.random())
+
+                if break_check > 20:
+                    sys.exit()
+                else:
+                    break_check = break_check + 1
 
             # 切换到下一个城市
             province = database.next_province()
