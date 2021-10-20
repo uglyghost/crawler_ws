@@ -27,7 +27,7 @@ if __name__ == '__main__':
     proxyHost, proxyPort = database.getIPAddress()
 
     # 爬虫相关功能基本类
-    wenshu = wenshu_class(ws_username=userInf['username'], ws_password=userInf['password'], ws_proxyHost = proxyHost, ws_proxyPort = proxyPort)
+    wenshu = wenshu_class(ws_username=userInf['username'], ws_password=userInf['password'], ws_proxyHost=proxyHost, ws_proxyPort=proxyPort)
     # 获取登陆后的Cookie
     json_cookie = wenshu.send_login()
     # 退出selenium浏览器自动化
