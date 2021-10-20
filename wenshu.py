@@ -30,7 +30,7 @@ class wenshu_class:
         print(ua.random)
 
         self.headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36',
             #'User-Agent':  ua.random,
             'Host': 'wenshu.court.gov.cn',
             'Origin': 'https://wenshu.court.gov.cn',
