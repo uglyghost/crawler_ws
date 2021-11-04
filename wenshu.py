@@ -27,10 +27,10 @@ class wenshu_class:
         random_str = "181217BMTKHNT2W0"
         print(random_str)
         ua = UserAgent(verify_ssl=False)
-        print(ua.random)
+        print('webshu,py',ua.random)
 
         self.headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36',
             #'User-Agent':  ua.random,
             'Host': 'wenshu.court.gov.cn',
             'Origin': 'https://wenshu.court.gov.cn',

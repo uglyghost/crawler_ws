@@ -2,7 +2,7 @@ from pymongo import MongoClient
 from database.ws_datetime import Date
 import datetime
 from bson import ObjectId
-from pandas import json_normalize
+from pandas.io.json import json_normalize
 
 import sys
 sys.path.append("..")
