@@ -141,3 +141,25 @@ class GetByDate:
         print('IP: '+ str(IP) + ' ' + "Port: " + str(Port))
 
         return IP, Port
+
+    def get_all_user(self):
+        tmp = mongodb['ws_user'].find()
+        return  tmp
+
+    def insert_session_data(self, ssdict):
+
+
+        query = {"username": ssdict['username']}
+
+        # 重复检查，看是否存在数据
+        count = mongodb['ws_session_list'].count_documents(query)
+        # print(tmp_dict)
+
+        if count == 0:
+            # 不存在，添加
+            result = mongodb['ws_session_list'].insert(ssdict)
+        else:
+            # 已存在，更新
+            result = mongodb['ws_session_list'].update_one(query, {'$set': ssdict})
+
+        return result
