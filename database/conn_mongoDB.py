@@ -3,7 +3,7 @@ from database.ws_datetime import Date
 import datetime
 from bson import ObjectId
 from pandas.io.json import json_normalize
-
+import numpy as np
 import sys
 sys.path.append("..")
 import settings.ws_setting as ws_settings
@@ -163,3 +163,29 @@ class GetByDate:
             result = mongodb['ws_session_list'].update_one(query, {'$set': ssdict})
 
         return result
+    def get_status_bug(self,errcode):#错误码 （1: available ,2:login failed,3:forbidden)
+        tmp = mongodb['ws_session_list'].find({'status':errcode})
+        return tmp
+
+    def get_user_passord(self,user_name):
+        uesr = mongodb['ws_user'].find({'username': user_name}).distinct('password')
+        return uesr
+
+    def update_field(self,  collection,query_key,query_value,field_key,set_v):
+        mongodb[collection].update({query_key:query_value},{'$set':{field_key:set_v}})
+
+    def get_random_cookie(self):
+
+        tmp = mongodb['ws_session_list'].find({"inuse":0,"status":1})
+        count = mongodb['ws_session_list'].find({"inuse":0,"status":1}).count()
+        print('当前共有',count,'个账号可用')
+        num = np.random.choice(count,1)[0]
+        print('num=',num)
+        i=0;
+        for cookie in tmp:
+            if(i==num):
+                print('选择账号：',cookie['username'])
+
+                return cookie
+            else:
+                i+=1

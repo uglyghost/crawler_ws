@@ -25,11 +25,13 @@ if __name__ == '__main__':
     proxyHost, proxyPort = database.getIPAddress()
 
     # 爬虫相关功能基本类
+
     wenshu = wenshu_class(ws_username=userInf['username'], ws_password=userInf['password'], ws_proxyHost = proxyHost, ws_proxyPort = proxyPort)
-    # 获取登陆后的Cookie
-    json_cookie = wenshu.send_login()
-    # 退出selenium浏览器自动化
-    wenshu.chrome.quit()
+
+    cookie = database.get_random_cookie()
+    database.update_field('ws_session_list', 'username', cookie['username'], 'inuse', 1)
+    json_cookie = "UM_distinctid="+cookie['UM_distinctid']+';'+"SESSION="+cookie['SESSION']+';'
+
     wenshu.headers['Cookie'] = json_cookie
 
     # 获取断点信息
@@ -89,9 +91,12 @@ if __name__ == '__main__':
                             except:
                                 wenshu.headers['Cookie'] = ""
                                 # 获取登陆后的Cookie
-                                json_cookie = wenshu.send_login()
-                                # 退出selenium浏览器自动化
-                                wenshu.chrome.quit()
+                                database.update_field('ws_session_list', 'username', cookie['username'], 'inuse', 0)
+                                database.update_field('ws_session_list','username',cookie['username'],'status',2)
+                                cookie = database.get_random_cookie()
+                                database.update_field('ws_session_list', 'username', cookie['username'], 'inuse', 1)
+                                json_cookie = "UM_distinctid=" + cookie['UM_distinctid'] + ';' + "SESSION=" + cookie[
+                                    'SESSION'] + ';'
                                 wenshu.headers['Cookie'] = json_cookie
                                 # 重新获取数据
                                 response = wenshu.send_post_request(params)
@@ -134,9 +139,15 @@ if __name__ == '__main__':
                                     if response['code'] == 9:
                                         wenshu.headers['Cookie'] = ""
                                         # 获取登陆后的Cookie
-                                        json_cookie = wenshu.send_login()
-                                        # 退出selenium浏览器自动化
-                                        wenshu.chrome.quit()
+                                        database.update_field('ws_session_list', 'username', cookie['username'],
+                                                              'inuse', 0)
+                                        database.update_field('ws_session_list', 'username', cookie['username'],
+                                                              'status', 2)
+                                        cookie = database.get_random_cookie()
+                                        database.update_field('ws_session_list', 'username', cookie['username'],
+                                                              'inuse', 1)
+                                        json_cookie = "UM_distinctid=" + cookie['UM_distinctid'] + ';' + "SESSION=" + \
+                                                      cookie['SESSION'] + ';'
                                         wenshu.headers['Cookie'] = json_cookie
                                         # 重新获取数据
                                         response = wenshu.send_post_request(params)
