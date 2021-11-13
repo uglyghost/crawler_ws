@@ -58,7 +58,10 @@ def check_and_uppdate():
         password = database.get_user_passord(error['username'])
         updatesession_one(error['username'], password)
 
-check_and_uppdate()
+while 1:#10分钟更新一次
+    check_and_uppdate()
+    time.sleep(600)
+
 
 # 退出selenium浏览器自动化
 
