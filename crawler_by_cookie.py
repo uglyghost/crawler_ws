@@ -3,7 +3,7 @@
 
 from time import sleep
 import random
-from wenshu import wenshu_class
+from wenshu import wenshu_class_crawler
 from database.conn_mongoDB import GetByDate
 import argparse
 
@@ -26,7 +26,7 @@ if __name__ == '__main__':
 
     # 爬虫相关功能基本类
 
-    wenshu = wenshu_class(ws_username=userInf['username'], ws_password=userInf['password'], ws_proxyHost = proxyHost, ws_proxyPort = proxyPort)
+    wenshu = wenshu_class_crawler(ws_username=userInf['username'], ws_password=userInf['password'], ws_proxyHost = proxyHost, ws_proxyPort = proxyPort)
 
     cookie = database.get_random_cookie()
     database.update_field('ws_session_list', 'username', cookie['username'], 'inuse', 1)
@@ -160,7 +160,7 @@ if __name__ == '__main__':
                             break
 
                     database.insert_data(response)
-                    sleep(random.randint(10, 15))
+                    sleep(random.randint(3,5))
 
                 # 切换到下一页
                 pageNum = pageNum + 1

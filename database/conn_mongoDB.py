@@ -189,3 +189,8 @@ class GetByDate:
                 return cookie
             else:
                 i+=1
+
+
+def get_usful_count():
+    count = mongodb['ws_session_list'].find({"inuse": 0, "status": 1}).count()
+    return count

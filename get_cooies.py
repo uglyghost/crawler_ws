@@ -1,3 +1,4 @@
+import time
 from wenshu import wenshu_class
 from database.conn_mongoDB import GetByDate
 import re
@@ -53,14 +54,17 @@ def updatesession_one(user_name,password):
 
 def check_and_uppdate():
     status_errors = database.get_status_bug(2)
+    count = status_errors.count()
+    print('共需更新：',count,'条')
+    i=1
     for error in status_errors:
-        print(error['status'])
+        print(error['status'],' ',error['inuse'],'\n',i,'/',count)
         password = database.get_user_passord(error['username'])
         updatesession_one(error['username'], password)
-
-while 1:#10分钟更新一次
+        i+=1
+while 1:#5s扫描一次
     check_and_uppdate()
-    time.sleep(600)
+    time.sleep(5)
 
 
 # 退出selenium浏览器自动化

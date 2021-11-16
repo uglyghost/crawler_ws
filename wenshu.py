@@ -30,7 +30,7 @@ class wenshu_class:
         print('webshu,py',ua.random)
 
         self.headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36',
             #'User-Agent':  ua.random,
             'Host': 'wenshu.court.gov.cn',
             'Origin': 'https://wenshu.court.gov.cn',
@@ -204,7 +204,9 @@ class wenshu_class:
         #sleep(random.randint(10))
         # 尝试请求获取数据
         try:
+            print('请求文书数据........')
             response = self.request.post(url=self.url, headers=self.headers, proxies=self.proxies, data=ws_params).json()       # 请求可能会出错，多次请求可以获取需要内容
+            print('数据成功返回........')
             #response = self.request.post(url=self.url, headers=self.headers, data=ws_params).json()
             # response['success'] = True
         except:
@@ -358,3 +360,128 @@ class mydataset(Dataset):
             image = self.transform(image)
         label = ohe.encode(image_name.split('_')[0]) # 为了方便，在生成图片的时候，图片文件的命名格式 "4个数字或者数字_时间戳.PNG", 4个字母或者即是图片的验证码的值，字母大写,同时对该值做 one-hot 处理
         return image, label
+
+class wenshu_class_crawler:
+    def __init__(self, ws_username, ws_password, ws_proxyHost, ws_proxyPort):
+        # 配置请求数据包头
+        random_str = ''.join(random.choice(string.digits) for _ in range(1))
+        random_str = "181217BMTKHNT2W0"
+        print(random_str)
+
+        print('webshu.py/wenshu_class_crawler数据类初始化\n')
+
+        self.headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36',
+            #'User-Agent':  ua.random,
+            'Host': 'wenshu.court.gov.cn',
+            'Origin': 'https://wenshu.court.gov.cn',
+            'sec-ch-ua': 'Google Chrome";v="94", "Chromium";v="94", ";Not A Brand";v="99',
+            'Referer': 'https://wenshu.court.gov.cn/website/wenshu/' + random_str + '/index.html?',
+            'Accept': 'application/json, text/javascript, */*; q=0.01',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Accept-Language': 'en-US,en;q=0.9',
+            'Connection': 'keep-alive',
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+            'Cookie': '',
+            'sec-ch-ua-platform': 'Windows',
+            'Content-Length': '848',
+            'sec-ch-ua-mobile': '?0',
+            'Sec-Fetch-Dest': 'empty',
+            'Sec-Fetch-Mode': 'cors',
+            'X-Requested-With': 'XMLHttpRequest',
+            'Sec-Fetch-Site': 'same-origin',
+        }
+        # 账号
+        # self.username = '18728411189'
+        self.username = ws_username
+        # 密码
+        # self.password = 'Cxy8335262!'
+        self.password = ws_password
+        # 文书接口URL
+        self.url = 'https://wenshu.court.gov.cn/website/parse/rest.q4w'
+        # 获取二维码URL
+        # self.codeURL = 'https://wenshu.court.gov.cn/waf_captcha/'
+        # 建立请求回话
+        self.request = requests.session()
+
+        # 初始化execjs
+        node = execjs.get()
+        # 加载需要执行的js文件 rest.q4w接口返回数据被加密 需要解密
+        self.ctx = node.compile(open('./js/decrypt_content.js', encoding='utf-8').read())
+
+        proxyMeta = "http://%(host)s:%(port)s" % {
+            "host": ws_proxyHost,
+            "port": ws_proxyPort,
+        }
+
+        self.proxies = {
+            "http": proxyMeta,
+        }
+
+        proxyType = 'http'  # socks5
+
+        # 代理隧道验证信息
+        service_args = [
+            "--proxy-type=%s" % proxyType,
+            "--proxy-server=%(host)s:%(port)s" % {
+                "host": ws_proxyHost,
+                "port": ws_proxyPort,
+            }
+        ]
+
+        p = {
+            'proxyType': 'MANUAL',
+            'httpProxy': proxyMeta,
+            'noProxy': ''
+        }
+
+        self.request.proxies = proxyMeta
+
+
+    # 加密内容解密
+    def decrypt_response(self, ws_content):
+        # 解密数据接口返回的加密内容
+        # 解密的key
+        secret_key = ws_content['secretKey']
+        # 加密的数据内容
+        result = ws_content['result']
+        # 需要执行的方法名，第一个参数加密内容，第二个参数key
+        func_name = 'DES3.decrypt("{0}", "{1}")'.format(result, secret_key)
+        # 获取解密后的数据内容
+        # 此处在windows下执行有报编码错误问题，需要将源码下的subprocess.py文件里的encoding改成utf-8
+        return self.ctx.eval(func_name)
+
+
+    def send_post_request(self, ws_params):
+        # print(self.proxies)
+        # print("11")
+        #p = self.request.get('http://httpbin.org/ip', headers=self.headers, proxies=self.proxies)
+        #print(p.text)
+        #sleep(random.randint(10))
+        # 尝试请求获取数据
+        try:
+            print('请求文书数据........')
+            response = self.request.post(url=self.url, headers=self.headers, proxies=self.proxies, data=ws_params).json()       # 请求可能会出错，多次请求可以获取需要内容
+            print('数据成功返回........')
+            #response = self.request.post(url=self.url, headers=self.headers, data=ws_params).json()
+            # response['success'] = True
+        except:
+            # 请求返回的数据格式报错，尝试检查
+            response = {'code': 9, 'success': False}
+
+        # 检查是否存在报错
+        if response['success'] == False:
+            return response
+        else:
+            # 解码后，正常返回数据
+            real_data = self.decrypt_response(response)
+            jsonData = json.loads(real_data)
+            return jsonData
+
+    # 发送get请求
+    def send_get_request(self, ws_params):
+        response = self.request.get(url=self.url, headers=self.headers, data=ws_params).json()
+        jsonData = json.loads(response)
+        return jsonData
+
+
