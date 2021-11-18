@@ -44,7 +44,8 @@ if __name__ == '__main__':
     #                  '浙江省','安徽省','福建省','江西省','山东省','河南省','湖北省','湖南省','广东省','海南省',
     #                  '四川省','贵州省','云南省','陕西省','甘肃省','青海省','台湾省','内蒙古自治区','广西壮族自治区','西藏自治区',
     #                  '宁夏回族自治区','新疆维吾尔自治区','新疆维吾尔自治区高级人民法院生产建设兵团分院']
-
+    data_num = 0
+    localtime = time.time()
     while 1:
         while province != '0':
             relWenshu = 1
@@ -186,6 +187,10 @@ if __name__ == '__main__':
 
 
                     database.insert_data(response)
+                    localtime2 = time.time()
+                    dett = localtime2-localtime
+                    data_num+=1
+                    print('连接时长:{}秒'.format(dett),'获取数据：{}条'.format(data_num))
                     sleep(random.randint(3,5))
 
                 # 切换到下一页
