@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-
+import time
 from time import sleep
 import random
 from wenshu import wenshu_class_crawler
@@ -8,7 +8,7 @@ from database.conn_mongoDB import GetByDate
 import argparse
 
 if __name__ == '__main__':
-
+    print('开始执行主程序')
     parser = argparse.ArgumentParser(description='manual to this script')
     parser.add_argument('--break-point', type=str, default=None)
     parser.add_argument('--user-id', type=str, default=None)
@@ -44,6 +44,7 @@ if __name__ == '__main__':
     #                  '浙江省','安徽省','福建省','江西省','山东省','河南省','湖北省','湖南省','广东省','海南省',
     #                  '四川省','贵州省','云南省','陕西省','甘肃省','青海省','台湾省','内蒙古自治区','广西壮族自治区','西藏自治区',
     #                  '宁夏回族自治区','新疆维吾尔自治区','新疆维吾尔自治区高级人民法院生产建设兵团分院']
+
     while 1:
         while province != '0':
             relWenshu = 1
@@ -77,49 +78,56 @@ if __name__ == '__main__':
                 # response = wenshu.send_post_request(params)
 
                 # 考虑可能请求出现错误的情况
+                i = 1
                 while True:
-                    try:
-                        print('开始发送查询请求，参数为：{}'.format(params))
-                        response = wenshu.send_post_request(params)
-                        print('查询请求返回结果：')
-                        print(response)
-                    except:
-                        sleep(random.randint(2, 4))
-                        continue
-                    else:
-                        # 可能返回无权限访问
+
+                    print('开始发送查询请求，参数为：{}'.format(params))
+                    response = wenshu.send_post_request(params)
+                    print('查询请求返回结果：{}'.format(response))
+                    print(type(response),response.keys())
+
+                    if ('code' in response.keys()):
                         while True:
-                            try:
-                                doc_list = response['queryResult']['resultList'][:]
-                            except:
-                                print('进入文档列表异常处理--->')
-                                wenshu.headers['Cookie'] = ""
-                                # 获取登陆后的Cookie
-                                database.update_field('ws_session_list', 'username', cookie['username'], 'inuse', 0)
-                                database.update_field('ws_session_list','username',cookie['username'],'status',2)
-                                cookie = database.get_random_cookie()
-                                database.update_field('ws_session_list', 'username', cookie['username'], 'inuse', 1)
-                                # json_cookie = "UM_distinctid=" + cookie['UM_distinctid'] + ';' + "SESSION=" + cookie['SESSION'] + ';'
-                                # json_cookie = "UM_distinctid=" + cookie['UM_distinctid'] + ';'
-                                json_cookie = "SESSION=" + cookie['SESSION'] + ';'
-                                wenshu.headers['Cookie'] = json_cookie
-                                # 重新获取数据
-                                print('更换数据后重新请求文档列表--->')
-                                response = wenshu.send_post_request(params)
-                                print('重新请求文档列表返回容--->{}'.format(response))
-                            else:
-                                # 跳出无权访问循环
-                                break
-                        # 跳出访问出错循环
+                                if response['code'] ==9:
+                                    print('文档列表请求返回代码为9，文档列表请求失败，休眠5秒后，重复{}次请求'.format(i))
+                                    i = i + 1
+                                    if i < 4:
+                                        sleep(5)
+                                        break
+                                    print('进入文档列表异常处理,准备切换账号--->')
+                                    wenshu.headers['Cookie'] = ""
+                                    # 获取登陆后的Cookie
+                                    database.update_field('ws_session_list', 'username', cookie['username'], 'inuse', 0)
+                                    database.update_field('ws_session_list', 'username', cookie['username'], 'status', 2)
+                                    cookie = database.get_random_cookie()
+                                    database.update_field('ws_session_list', 'username', cookie['username'], 'inuse', 1)
+                                    # json_cookie = "UM_distinctid=" + cookie['UM_distinctid'] + ';' + "SESSION=" + cookie['SESSION'] + ';'
+                                    # json_cookie = "UM_distinctid=" + cookie['UM_distinctid'] + ';'
+                                    json_cookie = "SESSION=" + cookie['SESSION'] + ';'
+                                    wenshu.headers['Cookie'] = json_cookie
+                                    # 重新获取数据
+                                    print('更换账号后完成--->')
+                                    i = 1
+                                    break
+
+                    else:
+                        print('开始解析返回文档列表')
+                        doc_list = response['queryResult']['resultList'][:]
+                        print('返回文档列表解析完成')
                         break
 
+
+
+
+
                 if len(doc_list) < 15:
+                    print('列表长度小于15')
                     relWenshu = None
 
                 #print(doc_list)
 
                 for index, value in enumerate(doc_list):
-
+                    print('处理列表中第{}条数据'.format(index))
                     doc_ID = value['rowkey']
                     ciphertext = wenshu.ctx.eval("cipher()")
                     verification_token = wenshu.ctx.eval("random(24)")
@@ -133,6 +141,7 @@ if __name__ == '__main__':
                     # response = wenshu.send_post_request(params)
 
                     # 考虑可能请求出现错误的情况
+                    j=1
                     while True:
                         try:
                             print('开始请求单条具体内容---->')
@@ -142,36 +151,38 @@ if __name__ == '__main__':
                             print('单条具体内容请求异常,休眠几秒后重新发起请求！')
                             sleep(random.randint(2, 4))
                             continue
-                        else:
+
+                        if 'code' in response.keys():
                             # 可能返回无权限访问
                             while True:
-                                try:
-                                    if response['code'] == 9:
-                                        print('单条内容请求失败，开始更换用户...')
-                                        wenshu.headers['Cookie'] = ""
-                                        # 获取登陆后的Cookie
-                                        database.update_field('ws_session_list', 'username', cookie['username'],
-                                                              'inuse', 0)
-                                        database.update_field('ws_session_list', 'username', cookie['username'],
-                                                              'status', 2)
-                                        cookie = database.get_random_cookie()
-                                        database.update_field('ws_session_list', 'username', cookie['username'],
-                                                              'inuse', 1)
-                                        # json_cookie = "UM_distinctid=" + cookie['UM_distinctid'] + ';' + "SESSION=" + cookie['SESSION'] + ';'
-                                        # json_cookie = "UM_distinctid=" + cookie['UM_distinctid'] + ';'
-                                        json_cookie = "SESSION=" + cookie['SESSION'] + ';'
-                                        wenshu.headers['Cookie'] = json_cookie
-                                        # 重新获取数据
-                                        print('单条内容请求失败，用户更换完毕，重新发起请求...')
-                                        response = wenshu.send_post_request(params)
-                                        print('重新发起单条请求，返回结果为{}'.format(response))
-                                    else:
-                                        # 跳出无权访问循环
+                                print(response.keys())
+
+                                if response['code'] == 9:
+                                    print('单条请求返回代码为9，单条请求失败，休眠5秒后，重复{}次请求'.format(j))
+                                    j = j + 1
+                                    if j < 4:
+                                        sleep(5)
                                         break
-                                except:
+                                    print('单条内容请求失败，开始更换用户...')
+                                    wenshu.headers['Cookie'] = ""
+                                    # 获取登陆后的Cookie
+                                    database.update_field('ws_session_list', 'username', cookie['username'],
+                                                          'inuse', 0)
+                                    database.update_field('ws_session_list', 'username', cookie['username'],
+                                                          'status', 2)
+                                    cookie = database.get_random_cookie()
+                                    database.update_field('ws_session_list', 'username', cookie['username'],
+                                                          'inuse', 1)
+                                    # json_cookie = "UM_distinctid=" + cookie['UM_distinctid'] + ';' + "SESSION=" + cookie['SESSION'] + ';'
+                                    # json_cookie = "UM_distinctid=" + cookie['UM_distinctid'] + ';'
+                                    json_cookie = "SESSION=" + cookie['SESSION'] + ';'
+                                    wenshu.headers['Cookie'] = json_cookie
+                                    # 重新获取数据
                                     break
-                            # 跳出访问出错循环
+                        else:
+                            print('单条应该成功返回，开始写入数据：')
                             break
+
 
                     database.insert_data(response)
                     sleep(random.randint(3,5))
