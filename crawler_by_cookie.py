@@ -177,6 +177,7 @@ if __name__ == '__main__':
                                     # json_cookie = "UM_distinctid=" + cookie['UM_distinctid'] + ';'
                                     json_cookie = "SESSION=" + cookie['SESSION'] + ';'
                                     wenshu.headers['Cookie'] = json_cookie
+                                    j=1
                                     # 重新获取数据
                                     break
                         else:
