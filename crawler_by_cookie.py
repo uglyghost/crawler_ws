@@ -6,7 +6,8 @@ import random
 from wenshu import wenshu_class_crawler
 from database.conn_mongoDB import GetByDate
 import argparse
-
+data_num = 0
+dett = 0
 if __name__ == '__main__':
     print('开始执行主程序')
     parser = argparse.ArgumentParser(description='manual to this script')
@@ -44,7 +45,7 @@ if __name__ == '__main__':
     #                  '浙江省','安徽省','福建省','江西省','山东省','河南省','湖北省','湖南省','广东省','海南省',
     #                  '四川省','贵州省','云南省','陕西省','甘肃省','青海省','台湾省','内蒙古自治区','广西壮族自治区','西藏自治区',
     #                  '宁夏回族自治区','新疆维吾尔自治区','新疆维吾尔自治区高级人民法院生产建设兵团分院']
-    data_num = 0
+
     localtime = time.time()
     while 1:
         while province != '0':
