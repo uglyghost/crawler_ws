@@ -48,7 +48,7 @@ def updatesession_one(user_name,password):
         print(user_name,'maybe forbidden! please check！')
         status = 3
     inuse = 0
-
+    print("当前IP：",ip)
     ssdict = {'UM_distinctid': UM_distinctid, 'SESSION': SESSION, 'username': user_name, 'inuse': inuse,
               'status': status,'ip':ip}
     database.insert_session_data(ssdict)
