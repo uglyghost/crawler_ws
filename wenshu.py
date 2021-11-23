@@ -1,3 +1,5 @@
+import time
+
 import requests
 import execjs
 import json
@@ -461,7 +463,8 @@ class wenshu_class_crawler:
         # 尝试请求获取数据
         try:
             print('请求文书数据........')
-            response = self.request.post(url=self.url, headers=self.headers, proxies=self.proxies, data=ws_params).json()       # 请求可能会出错，多次请求可以获取需要内容
+            t_start = time.time()
+            response = self.request.post(url=self.url, headers=self.headers, proxies=self.proxies, data=ws_params,timeout=20).json()       # 20211123：发现请求后无响应，系统卡死，尝试增加timeout参数
             print('数据成功返回........')
             #response = self.request.post(url=self.url, headers=self.headers, data=ws_params).json()
             # response['success'] = True

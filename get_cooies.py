@@ -1,6 +1,7 @@
 import time
 from wenshu import wenshu_class
 from database.conn_mongoDB import GetByDate
+from database.conn_mongoDB import get_outnet_ip
 import re
 userid = ''
 database = GetByDate('61684020884484b96b11ad11',userid)
@@ -35,7 +36,7 @@ def updatesession_one(user_name,password):
                           ws_proxyPort=proxyPort)
     # 获取登陆后的Cookie
     inuse = 1 #1:busy,0: available
-    database.update_field('ws_session_list','username',user_name,'inuse',inuse)
+    database.update_field('ws_session_list','username',user_name,'inuse',inuse) #inuse置1，正在更新
     json_cookie = wenshu.send_login()
     UM_distinctid = re.findall('UM_distinctid=(.*?);', json_cookie, re.S)[0]
     try:
@@ -46,8 +47,9 @@ def updatesession_one(user_name,password):
         print(user_name,'maybe forbidden! please check！')
         status = 3
     inuse = 0
+    ip = get_outnet_ip()
     ssdict = {'UM_distinctid': UM_distinctid, 'SESSION': SESSION, 'username': user_name, 'inuse': inuse,
-              'status': status}
+              'status': status,'ip':ip}
     database.insert_session_data(ssdict)
     print('UM_distinctid=', UM_distinctid, 'SESSION=', SESSION)
     wenshu.chrome.quit()

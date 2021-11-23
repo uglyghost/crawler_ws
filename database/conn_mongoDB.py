@@ -10,7 +10,7 @@ import settings.ws_setting as ws_settings
 import random
 
 # 导入需要的模块，若没有需要去pip在线下载“pymongo”s
-
+from urllib.request import urlopen
 from pymongo import MongoClient
 
 user = 'wenshu'
@@ -174,9 +174,9 @@ class GetByDate:
     def update_field(self,  collection,query_key,query_value,field_key,set_v):
         mongodb[collection].update({query_key:query_value},{'$set':{field_key:set_v}})
 
-    def get_random_cookie(self):
+    def get_random_cookie(self,ip):
 
-        tmp = mongodb['ws_session_list'].find({"inuse":0,"status":1})
+        tmp = mongodb['ws_session_list'].find({"inuse":0,"status":1,"ip":ip})
         count = mongodb['ws_session_list'].find({"inuse":0,"status":1}).count()
         print('当前共有',count,'个账号可用')
         num = np.random.choice(count,1)[0]
@@ -194,3 +194,7 @@ class GetByDate:
 def get_usful_count():
     count = mongodb['ws_session_list'].find({"inuse": 0, "status": 1}).count()
     return count
+def get_outnet_ip():
+    my_ip = urlopen('http://ip.42.pl/raw').read().decode("ascii")
+    print('外网ip:', my_ip)
+    return my_ip

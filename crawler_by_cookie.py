@@ -5,9 +5,13 @@ from time import sleep
 import random
 from wenshu import wenshu_class_crawler
 from database.conn_mongoDB import GetByDate
+from database.conn_mongoDB import get_outnet_ip
 import argparse
+
 data_num = 0
 dett = 0
+
+
 if __name__ == '__main__':
     print('开始执行主程序')
     parser = argparse.ArgumentParser(description='manual to this script')
@@ -28,8 +32,8 @@ if __name__ == '__main__':
     # 爬虫相关功能基本类
 
     wenshu = wenshu_class_crawler(ws_username=userInf['username'], ws_password=userInf['password'], ws_proxyHost = proxyHost, ws_proxyPort = proxyPort)
-
-    cookie = database.get_random_cookie()
+    ip = get_outnet_ip()
+    cookie = database.get_random_cookie(ip)  #根据ip获取数据
     database.update_field('ws_session_list', 'username', cookie['username'], 'inuse', 1)
     # json_cookie = "UM_distinctid="+cookie['UM_distinctid']+';'+"SESSION="+cookie['SESSION']+';'
     # json_cookie = "UM_distinctid=" + cookie['UM_distinctid'] + ';'
@@ -101,7 +105,8 @@ if __name__ == '__main__':
                                     # 获取登陆后的Cookie
                                     database.update_field('ws_session_list', 'username', cookie['username'], 'inuse', 0)
                                     database.update_field('ws_session_list', 'username', cookie['username'], 'status', 2)
-                                    cookie = database.get_random_cookie()
+
+                                    cookie = database.get_random_cookie(ip)
                                     database.update_field('ws_session_list', 'username', cookie['username'], 'inuse', 1)
                                     # json_cookie = "UM_distinctid=" + cookie['UM_distinctid'] + ';' + "SESSION=" + cookie['SESSION'] + ';'
                                     # json_cookie = "UM_distinctid=" + cookie['UM_distinctid'] + ';'
@@ -172,7 +177,7 @@ if __name__ == '__main__':
                                                           'inuse', 0)
                                     database.update_field('ws_session_list', 'username', cookie['username'],
                                                           'status', 2)
-                                    cookie = database.get_random_cookie()
+                                    cookie = database.get_random_cookie(ip)
                                     database.update_field('ws_session_list', 'username', cookie['username'],
                                                           'inuse', 1)
                                     # json_cookie = "UM_distinctid=" + cookie['UM_distinctid'] + ';' + "SESSION=" + cookie['SESSION'] + ';'
@@ -189,7 +194,9 @@ if __name__ == '__main__':
 
                     database.insert_data(response)
                     localtime2 = time.time()
+
                     dett = localtime2-localtime
+
                     data_num+=1
                     print('连接时长:{}秒'.format(dett),'获取数据：{}条'.format(data_num))
                     sleep(random.randint(3,5))
