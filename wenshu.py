@@ -462,7 +462,7 @@ class wenshu_class_crawler:
         # 尝试请求获取数据
         try:
             print('请求文书数据........')
-            response = self.request.post(url=self.url, headers=self.headers, data=ws_params,timeout=100).json()       # 20211123：发现请求后无响应，系统卡死，尝试增加timeout参数
+            response = self.request.post(url=self.url, headers=self.headers, data=ws_params,timeout=200).json()       # 20211123：发现请求后无响应，系统卡死，尝试增加timeout参数
             print('数据成功返回........')
             #response = self.request.post(url=self.url, headers=self.headers, data=ws_params).json()
             # response['success'] = True

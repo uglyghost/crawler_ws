@@ -6,6 +6,7 @@ import re
 userid = ''
 database = GetByDate('61684020884484b96b11ad11',userid)
 proxyHost, proxyPort = database.getIPAddress()
+ip = get_outnet_ip()
 def updatesession_from_db():
     i=0
     usersInf = database.get_all_user()
@@ -24,7 +25,7 @@ def updatesession_from_db():
         status = 1
         if SESSION == 'NAN':
             status =3
-        ssdict = {'UM_distinctid':UM_distinctid,'SESSION':SESSION,'username':username,'inuse':inuse,'status':status}
+        ssdict = {'UM_distinctid':UM_distinctid,'SESSION':SESSION,'username':username,'inuse':inuse,'status':status,'ip':ip}
         database.insert_session_data(ssdict)
         print('UM_distinctid=',UM_distinctid,'SESSION=',SESSION)
         wenshu.chrome.quit()
@@ -47,7 +48,7 @@ def updatesession_one(user_name,password):
         print(user_name,'maybe forbidden! please check！')
         status = 3
     inuse = 0
-    ip = get_outnet_ip()
+
     ssdict = {'UM_distinctid': UM_distinctid, 'SESSION': SESSION, 'username': user_name, 'inuse': inuse,
               'status': status,'ip':ip}
     database.insert_session_data(ssdict)

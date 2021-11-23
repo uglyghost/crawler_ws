@@ -192,7 +192,7 @@ class GetByDate:
 
 
 def get_outnet_ip():
-    my_ip = urlopen('http://ip.42.pl/raw').read().decode("ascii")
+    my_ip = urlopen('http://ifconfig.me/ip').read().decode("ascii")
     print('外网ip:', my_ip)
     return my_ip
 
