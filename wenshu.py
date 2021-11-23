@@ -28,8 +28,8 @@ class wenshu_class:
         random_str = ''.join(random.choice(string.digits) for _ in range(1))
         random_str = "181217BMTKHNT2W0"
         print(random_str)
-        ua = UserAgent(verify_ssl=False)
-        print('webshu,py',ua.random)
+        # ua = UserAgent(verify_ssl=False)
+        # print('webshu,py',ua.random)
 
         self.headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36',
@@ -96,17 +96,16 @@ class wenshu_class:
             'noProxy': ''
         }
 
-        self.request.proxies = proxyMeta
+        # self.request.proxies = proxyMeta
 
         # 初始化chrome驱动配置
         chrome_options = webdriver.ChromeOptions()
         # 让浏览器不显示自动化测试
         chrome_options.add_argument('disable-infobars')
         chrome_options.add_experimental_option("detach", False)
-        chrome_options.set_capability("proxy", p)
+        # chrome_options.set_capability("proxy", p)
         # 设置window系统下的chrome驱动程序
-        self.chrome = webdriver.Chrome(executable_path='./driver/chromedriver.exe', options=chrome_options,
-                                       service_args=service_args)
+        self.chrome = webdriver.Chrome(executable_path='./driver/chromedriver.exe', options=chrome_options)
 
         #p = self.chrome.get('http://icanhazip.com')
         #print(p)
@@ -207,7 +206,7 @@ class wenshu_class:
         # 尝试请求获取数据
         try:
             print('请求文书数据........')
-            response = self.request.post(url=self.url, headers=self.headers, proxies=self.proxies, data=ws_params).json()       # 请求可能会出错，多次请求可以获取需要内容
+            response = self.request.post(url=self.url, headers=self.headers, data=ws_params).json()       # 请求可能会出错，多次请求可以获取需要内容
             print('数据成功返回........')
             #response = self.request.post(url=self.url, headers=self.headers, data=ws_params).json()
             # response['success'] = True
@@ -437,7 +436,7 @@ class wenshu_class_crawler:
             'noProxy': ''
         }
 
-        self.request.proxies = proxyMeta
+        # self.request.proxies = proxyMeta
 
 
     # 加密内容解密
@@ -463,15 +462,18 @@ class wenshu_class_crawler:
         # 尝试请求获取数据
         try:
             print('请求文书数据........')
-            t_start = time.time()
-            response = self.request.post(url=self.url, headers=self.headers, proxies=self.proxies, data=ws_params,timeout=20).json()       # 20211123：发现请求后无响应，系统卡死，尝试增加timeout参数
+            response = self.request.post(url=self.url, headers=self.headers, data=ws_params,timeout=100).json()       # 20211123：发现请求后无响应，系统卡死，尝试增加timeout参数
             print('数据成功返回........')
             #response = self.request.post(url=self.url, headers=self.headers, data=ws_params).json()
             # response['success'] = True
-        except:
+
+        except requests.exceptions.RequestException as e:
+            print(e)
             # 请求返回的数据格式报错，尝试检查
             response = {'code': 9, 'success': False}
-
+        except:
+            print('post请求未知错误')
+            response = {'code': 9, 'success': False}
         # 检查是否存在报错
         if response['success'] == False:
             return response

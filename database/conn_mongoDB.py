@@ -177,24 +177,26 @@ class GetByDate:
     def get_random_cookie(self,ip):
 
         tmp = mongodb['ws_session_list'].find({"inuse":0,"status":1,"ip":ip})
-        count = mongodb['ws_session_list'].find({"inuse":0,"status":1}).count()
+        count = mongodb['ws_session_list'].find({"inuse":0,"status":1,"ip":ip}).count()
         print('当前共有',count,'个账号可用')
         num = np.random.choice(count,1)[0]
         print('num=',num)
         i=0;
         for cookie in tmp:
             if(i==num):
-                print('选择账号：',cookie['username'])
+                print('选择账号：',cookie['username'],cookie['ip'])
 
                 return cookie
             else:
                 i+=1
 
 
-def get_usful_count():
-    count = mongodb['ws_session_list'].find({"inuse": 0, "status": 1}).count()
-    return count
 def get_outnet_ip():
     my_ip = urlopen('http://ip.42.pl/raw').read().decode("ascii")
     print('外网ip:', my_ip)
     return my_ip
+
+ip = get_outnet_ip()
+def get_usful_count():
+    count = mongodb['ws_session_list'].find({"inuse": 0, "status": 1,"ip":ip}).count()
+    return count
