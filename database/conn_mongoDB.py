@@ -174,10 +174,10 @@ class GetByDate:
     def update_field(self,  collection,query_key,query_value,field_key,set_v):
         mongodb[collection].update({query_key:query_value},{'$set':{field_key:set_v}})
 
-    def get_random_cookie(self,ip):
+    def get_random_cookie(self):
 
-        tmp = mongodb['ws_session_list'].find({"inuse":0,"status":1,"ip":ip})
-        count = mongodb['ws_session_list'].find({"inuse":0,"status":1,"ip":ip}).count()
+        tmp = mongodb['ws_session_list'].find({"inuse":0,"status":1})
+        count = mongodb['ws_session_list'].find({"inuse":0,"status":1}).count()
         print('当前共有',count,'个账号可用')
         num = np.random.choice(count,1)[0]
         print('num=',num)
@@ -198,5 +198,5 @@ def get_outnet_ip():
 
 ip = get_outnet_ip()
 def get_usful_count():
-    count = mongodb['ws_session_list'].find({"inuse": 0, "status": 1,"ip":ip}).count()
+    count = mongodb['ws_session_list'].find({"inuse": 0, "status": 1}).count()
     return count
