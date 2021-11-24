@@ -84,7 +84,7 @@ def check_and_uppdate(num):
             updatesession_one(error['username'], password)
             j+=1
 while 1:#5s扫描一次
-    check_and_uppdate(7) #根据实际需要更新可用用户数,当前维护4个可用session
+    check_and_uppdate(7) #根据实际需要更新可用用户数,当前维护7个可用session
     time.sleep(5)
 
 
