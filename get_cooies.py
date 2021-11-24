@@ -1,7 +1,8 @@
 import time
 from wenshu import wenshu_class
 from database.conn_mongoDB import GetByDate
-from database.conn_mongoDB import get_outnet_ip
+from database.conn_mongoDB import get_outnet_ip,get_usful_count
+import numpy as np
 import re
 userid = ''
 database = GetByDate('61684020884484b96b11ad11',userid)
@@ -55,18 +56,35 @@ def updatesession_one(user_name,password):
     print('UM_distinctid=', UM_distinctid, 'SESSION=', SESSION)
     wenshu.chrome.quit()
 
-def check_and_uppdate():
+def check_and_uppdate(num):
+    available = get_usful_count()
     status_errors = database.get_status_bug(2)
     count = status_errors.count()
-    print('共需更新：',count,'条')
-    i=1
-    for error in status_errors:
-        print(error['status'],' ',error['inuse'],'\n',i,'/',count)
-        password = database.get_user_passord(error['username'])
-        updatesession_one(error['username'], password)
-        i+=1
+
+    status_errors = [error for error in status_errors]
+
+
+    if num<count:  #如果要求可用数目小于可更新数
+        update = num - available
+        shuffled_indices = np.random.permutation(update)
+        print('共可更新：{}条,可用数：{}条,本次更新：{}条'.format(count,available,update))
+        k=1
+        for i in shuffled_indices:
+            print(status_errors[i]['status'], ' ', status_errors[i]['inuse'], '\n',k, '/', update)
+            password = database.get_user_passord(status_errors[i]['username'])
+            updatesession_one(status_errors[i]['username'], password)
+            k+=1
+
+
+    else: #超出可更新数，只更新可更新
+        j=1
+        for error in status_errors:
+            print(error['status'],' ',error['inuse'],'\n',j,'/',count)
+            password = database.get_user_passord(error['username'])
+            updatesession_one(error['username'], password)
+            j+=1
 while 1:#5s扫描一次
-    check_and_uppdate()
+    check_and_uppdate(7) #根据实际需要更新可用用户数,当前维护4个可用session
     time.sleep(5)
 
 
