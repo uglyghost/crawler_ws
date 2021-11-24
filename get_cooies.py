@@ -66,7 +66,7 @@ def check_and_uppdate(num):
 
     if num<count:  #如果要求可用数目小于可更新数
         update = num - available
-        shuffled_indices = np.random.permutation(update)
+        shuffled_indices = np.random.permutation(update) #生成一个随机序列，然而并没有多大用
         print('共可更新：{}条,可用数：{}条,本次更新：{}条'.format(count,available,update))
         k=1
         for i in shuffled_indices:
