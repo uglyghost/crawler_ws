@@ -7,7 +7,7 @@ from wenshu import wenshu_class_crawler
 from database.conn_mongoDB import GetByDate
 from database.conn_mongoDB import get_outnet_ip
 import argparse
-
+import datetime
 data_num = 0
 dett = 0
 
@@ -194,11 +194,11 @@ if __name__ == '__main__':
 
                     database.insert_data(response)
                     localtime2 = time.time()
-
+                    now_time = datetime.datetime.now()
                     dett = localtime2-localtime
 
                     data_num+=1
-                    print('连接时长:{}秒'.format(dett),'获取数据：{}条'.format(data_num))
+                    print('连接时长:{}秒'.format(dett),'获取数据：{}条'.format(data_num),'当前时间：{}'.format(now_time))
                     sleep(random.randint(4,6))
 
                 # 切换到下一页
