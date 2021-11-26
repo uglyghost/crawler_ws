@@ -15,7 +15,7 @@ from pymongo import MongoClient
 
 user = 'wenshu'
 pwd = '123456'
-host = '10.220.139.140'
+host = 'localhost'
 port = '27017'
 db_name = 'wenshu'
 
