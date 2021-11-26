@@ -1,0 +1,161 @@
+{ 
+    "_id" : ObjectId("615ff07c1592e4bbdcfc1eb2"), 
+    "province" : "陕西省", 
+    "datetime" : "2021-08-31", 
+    "pagenum" : NumberInt(36), 
+    "username" : "chenxingyan"
+}
+{ 
+    "_id" : ObjectId("6167f1d5227d6c6a3647abe6"), 
+    "province" : "天津市", 
+    "datetime" : "2019-01-01", 
+    "pagenum" : NumberInt(3), 
+    "username" : "zhangxuesong"
+}
+{ 
+    "_id" : ObjectId("61684020884484b96b11add9"), 
+    "province" : "江西省", 
+    "datetime" : "2021-07-22", 
+    "pagenum" : NumberInt(30), 
+    "username" : "bingchen"
+}
+{ 
+    "_id" : ObjectId("61684020884484b96b11add0"), 
+    "province" : "天津市", 
+    "datetime" : "2021-06-25", 
+    "pagenum" : NumberInt(27), 
+    "username" : "chen"
+}
+{ 
+    "_id" : ObjectId("61684020884484b96b11add5"), 
+    "province" : "河南省", 
+    "datetime" : "2021-05-25", 
+    "pagenum" : NumberInt(13), 
+    "username" : "chen"
+}
+{ 
+    "_id" : ObjectId("61684020884484b96b11add4"), 
+    "province" : "江西省", 
+    "datetime" : "2021-04-25", 
+    "pagenum" : NumberInt(37), 
+    "username" : "chen"
+}
+{ 
+    "_id" : ObjectId("61684020884484b96b11add3"), 
+    "province" : "黑龙江省", 
+    "datetime" : "2021-03-23", 
+    "pagenum" : NumberInt(15), 
+    "username" : "chen"
+}
+{ 
+    "_id" : ObjectId("61684020884484b96b11add2"), 
+    "province" : "福建省", 
+    "datetime" : "2021-02-21", 
+    "pagenum" : NumberInt(1), 
+    "username" : "chen"
+}
+{ 
+    "_id" : ObjectId("61684020884484b96b11add1"), 
+    "province" : "山东省", 
+    "datetime" : "2021-01-22", 
+    "pagenum" : NumberInt(8), 
+    "username" : "chen"
+}
+{ 
+    "_id" : ObjectId("61684020884484b96b11ad12"), 
+    "province" : "山西省", 
+    "datetime" : "2020-12-23", 
+    "pagenum" : NumberInt(2), 
+    "username" : "chen"
+}
+{ 
+    "_id" : ObjectId("61684020884484b96b11ad11"), 
+    "province" : "湖南省", 
+    "datetime" : "2020-11-18", 
+    "pagenum" : NumberInt(3), 
+    "username" : "chen"
+}
+{ 
+    "_id" : ObjectId("61684020884484b96b11ad10"), 
+    "province" : "甘肃省", 
+    "datetime" : "2020-10-21", 
+    "pagenum" : NumberInt(13), 
+    "username" : "chen"
+}
+{ 
+    "_id" : ObjectId("61692808b5b6d832ad606acb"), 
+    "province" : "安徽省", 
+    "datetime" : "2020-09-24", 
+    "pagenum" : NumberInt(4), 
+    "username" : "chen"
+}
+{ 
+    "_id" : ObjectId("6169282cb5b6d832ad606acc"), 
+    "province" : "陕西省", 
+    "datetime" : "2020-08-28", 
+    "pagenum" : NumberInt(27), 
+    "username" : "chen"
+}
+{ 
+    "_id" : ObjectId("61692923b5b6d832ad606ad6"), 
+    "province" : "宁夏回族自治区", 
+    "datetime" : "2019-12-05", 
+    "pagenum" : NumberInt(2), 
+    "username" : "chen"
+}
+{ 
+    "_id" : ObjectId("61692923b5b6d832ad606ad5"), 
+    "province" : "海南省", 
+    "datetime" : "2020-06-16", 
+    "pagenum" : NumberInt(4), 
+    "username" : "chen"
+}
+{ 
+    "_id" : ObjectId("61692923b5b6d832ad606ac6"), 
+    "province" : "北京市", 
+    "datetime" : "2020-05-01", 
+    "pagenum" : NumberInt(1), 
+    "username" : "chen"
+}
+{ 
+    "_id" : ObjectId("61692923b5b6d832ad616ad6"), 
+    "province" : "重庆市", 
+    "datetime" : "2020-04-30", 
+    "pagenum" : NumberInt(3), 
+    "username" : "chen"
+}
+{ 
+    "_id" : ObjectId("61692923b5b6d833ad606ad6"), 
+    "province" : "北京市", 
+    "datetime" : "2020-03-01", 
+    "pagenum" : NumberInt(1), 
+    "username" : "chen"
+}
+{ 
+    "_id" : ObjectId("61692923d5b6d832ad606ad6"), 
+    "province" : "甘肃省", 
+    "datetime" : "2020-02-04", 
+    "pagenum" : NumberInt(2), 
+    "username" : "chen"
+}
+{ 
+    "_id" : ObjectId("61692934b5b6d832ad606ad6"), 
+    "province" : "青海省", 
+    "datetime" : "2020-01-03", 
+    "pagenum" : NumberInt(5), 
+    "username" : "chen"
+}
+{ 
+    "_id" : ObjectId("6183d6febc091136014ee2f3"), 
+    "province" : "北京市", 
+    "datetime" : "2019-11-01", 
+    "pagenum" : NumberInt(1), 
+    "username" : "chen"
+}
+{ 
+    "_id" : ObjectId("6183d6febc091136014ee2f4"), 
+    "province" : "北京市", 
+    "datetime" : "2017-01-01", 
+    "pagenum" : NumberInt(1), 
+    "username" : "chen"
+}

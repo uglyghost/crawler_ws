@@ -1,0 +1,525 @@
+{ 
+    "_id" : ObjectId("61835291bc091136014ee2d8"), 
+    "UM_distinctid" : "17d4bcfc2b9318-0c82bd41ea0eda-57b1a33-384000-17d4bcfc2ba1330", 
+    "SESSION" : "2de18d67-0346-4d4d-bcd8-b0a30f98dea0", 
+    "username" : "13120171893", 
+    "inuse" : NumberInt(1), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.33"
+}
+{ 
+    "_id" : ObjectId("6183972fb6f519fdbc16a289"), 
+    "UM_distinctid" : "17d4b7f111c1d8-0ab682733a7042-57b1a33-384000-17d4b7f111d1359", 
+    "SESSION" : "NAN", 
+    "username" : "18728411189", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(3), 
+    "ip" : "218.89.242.33"
+}
+{ 
+    "_id" : ObjectId("61839740b6f519fdbc16a28a"), 
+    "UM_distinctid" : "17d4b7f42b4dab-097012db3780b2-57b1a33-384000-17d4b7f42b5ee3", 
+    "SESSION" : "NAN", 
+    "username" : "19160355297", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(3), 
+    "ip" : "218.89.242.33"
+}
+{ 
+    "_id" : ObjectId("61839768b6f519fdbc16a28b"), 
+    "UM_distinctid" : "17d4bf790107e3-081ae070fbf1be-57b1a33-384000-17d4bf79011772", 
+    "SESSION" : "aacb0598-46a9-49f4-a24b-993a45d9dfd6", 
+    "username" : "19956575256", 
+    "inuse" : NumberInt(1), 
+    "status" : NumberInt(1), 
+    "ip" : "23.105.196.112"
+}
+{ 
+    "_id" : ObjectId("6183977ab6f519fdbc16a28c"), 
+    "UM_distinctid" : "17d4bdebdaa81d-0a8cb821f752e5-57b1a33-384000-17d4bdebdabd70", 
+    "SESSION" : "d98748d3-4e05-4f1e-9aed-52b231553122", 
+    "username" : "18382266241", 
+    "inuse" : NumberInt(1), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.33"
+}
+{ 
+    "_id" : ObjectId("6183978ab6f519fdbc16a28d"), 
+    "UM_distinctid" : "17d4b840ff0506-02a4b78b68a43e-57b1a33-384000-17d4b840ff112bc", 
+    "SESSION" : "NAN", 
+    "username" : "15071328979", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(3), 
+    "ip" : "218.89.242.33"
+}
+{ 
+    "_id" : ObjectId("618397a1b6f519fdbc16a28e"), 
+    "UM_distinctid" : "17d4bf8246d1060-0856b9093bb5a5-57b1a33-384000-17d4bf8246e557", 
+    "SESSION" : "d9d231ea-d5e8-44e1-aca1-b3167ba86fc3", 
+    "username" : "19136168014", 
+    "inuse" : NumberInt(1), 
+    "status" : NumberInt(1), 
+    "ip" : "23.105.196.112"
+}
+{ 
+    "_id" : ObjectId("618397b6b6f519fdbc16a28f"), 
+    "UM_distinctid" : "17d5a517b5060e-006e120d22b6fa-17291209-100200-17d5a517b51766", 
+    "SESSION" : "2f8acdad-3d78-4fa2-aa8a-9f92d26cf5d5", 
+    "username" : "15082484686", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.223"
+}
+{ 
+    "_id" : ObjectId("618397c9b6f519fdbc16a290"), 
+    "UM_distinctid" : "17d5a4f5c13c2-0463c22ea05ecb-17291209-100200-17d5a4f5c14732", 
+    "SESSION" : "b13e2484-2795-408e-b314-80f664b6906b", 
+    "username" : "19180959604", 
+    "inuse" : NumberInt(1), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.223"
+}
+{ 
+    "_id" : ObjectId("618397ddb6f519fdbc16a291"), 
+    "UM_distinctid" : "17d5556cf4ffd4-08ace3f65e5fd9-57b1a33-384000-17d5556cf5012f3", 
+    "SESSION" : "629ae035-08d7-4480-a00a-8a15424df32e", 
+    "username" : "15608193021", 
+    "inuse" : NumberInt(1), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.33"
+}
+{ 
+    "_id" : ObjectId("618397efb6f519fdbc16a292"), 
+    "UM_distinctid" : "17d525bcf476f2-0366bd02674259-57b1a33-384000-17d525bcf4812f4", 
+    "SESSION" : "8246282d-cd16-492b-b715-33c4216e90d5", 
+    "username" : "17760483605", 
+    "inuse" : NumberInt(1), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.33"
+}
+{ 
+    "_id" : ObjectId("61839803b6f519fdbc16a293"), 
+    "UM_distinctid" : "17d4d691679eab-05f5845cbf7fed-57b1a33-384000-17d4d69167a109f", 
+    "SESSION" : "680e61d8-5fbd-4c4c-b609-81f6cf54258b", 
+    "username" : "18386012191", 
+    "inuse" : NumberInt(1), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.33"
+}
+{ 
+    "_id" : ObjectId("61839816b6f519fdbc16a294"), 
+    "UM_distinctid" : "17d5a408d251d1-0021ca3eec2f4-17291209-100200-17d5a408d26645", 
+    "SESSION" : "569e2913-6870-4188-81c7-a76cbf9f426c", 
+    "username" : "15230810227", 
+    "inuse" : NumberInt(1), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.223"
+}
+{ 
+    "_id" : ObjectId("61839827b6f519fdbc16a295"), 
+    "UM_distinctid" : "17d4c264e063d-05c42c726e291-584c2d14-1fa400-17d4c264e0765f", 
+    "SESSION" : "NAN", 
+    "username" : "13755833173", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(3), 
+    "ip" : "218.89.242.70"
+}
+{ 
+    "_id" : ObjectId("61839839b6f519fdbc16a296"), 
+    "UM_distinctid" : "17d5a4ee77f723-046362c584cad3-17291209-100200-17d5a4ee78064e", 
+    "SESSION" : "fcafbc74-c191-40ea-8dbe-9374b36f59d0", 
+    "username" : "17381577982", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.223"
+}
+{ 
+    "_id" : ObjectId("618398d5b6f519fdbc16a297"), 
+    "UM_distinctid" : "17d4c2784563eb-0a78c2a5c24f9-584c2d14-1fa400-17d4c278457727", 
+    "SESSION" : "6a78e1ba-03c1-4a9c-b4c6-e6a0849fae27", 
+    "username" : "18081939907", 
+    "inuse" : NumberInt(1), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.70"
+}
+{ 
+    "_id" : ObjectId("618398e7b6f519fdbc16a298"), 
+    "UM_distinctid" : "17d4c83666f982-0f5f323d5b9712-57b1a33-384000-17d4c8366701295", 
+    "SESSION" : "NAN", 
+    "username" : "13551138968", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(3), 
+    "ip" : "218.89.242.33"
+}
+{ 
+    "_id" : ObjectId("618398f9b6f519fdbc16a299"), 
+    "UM_distinctid" : "17d4ba6f055db7-0a765cf873611c-978183a-384000-17d4ba6f05614c2", 
+    "SESSION" : "NAN", 
+    "username" : "17394976332", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(3), 
+    "ip" : "218.89.242.33"
+}
+{ 
+    "_id" : ObjectId("6183990eb6f519fdbc16a29a"), 
+    "UM_distinctid" : "17d5548806b1152-0e853c7354ab59-57b1a33-384000-17d5548806c12cf", 
+    "SESSION" : "c6c6add5-ac82-487e-a174-dbe8f8a82aae", 
+    "username" : "13708180328", 
+    "inuse" : NumberInt(1), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.33"
+}
+{ 
+    "_id" : ObjectId("61839922b6f519fdbc16a29b"), 
+    "UM_distinctid" : "17d4ba7a28cba6-0bb29b0e2f5b16-978183a-384000-17d4ba7a28d159b", 
+    "SESSION" : "NAN", 
+    "username" : "18384128332", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(3), 
+    "ip" : "218.89.242.33"
+}
+{ 
+    "_id" : ObjectId("61839935b6f519fdbc16a29c"), 
+    "UM_distinctid" : "17d4c2c1b465df-06e8f17d2685bb-584c2d14-1fa400-17d4c2c1b474c8", 
+    "SESSION" : "ee57a602-eee1-4e80-8168-ad1706ec365d", 
+    "username" : "18898462426", 
+    "inuse" : NumberInt(1), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.70"
+}
+{ 
+    "_id" : ObjectId("61839948b6f519fdbc16a29d"), 
+    "UM_distinctid" : "17d5a4c65bf879-04dd38ef8b71bd-17291209-100200-17d5a4c65c0374", 
+    "SESSION" : "d56a48c4-7b7a-40b2-9bca-06214669e74e", 
+    "username" : "13172164728", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(2), 
+    "ip" : "218.89.242.223"
+}
+{ 
+    "_id" : ObjectId("6183995bb6f519fdbc16a29e"), 
+    "UM_distinctid" : "17d5a4c9a1c61a-0a476dfccff9e5-17291209-100200-17d5a4c9a1d4b4", 
+    "SESSION" : "c22b0edb-d730-485c-8554-e6e01159b6b5", 
+    "username" : "13431151411", 
+    "inuse" : NumberInt(1), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.223"
+}
+{ 
+    "_id" : ObjectId("6183996eb6f519fdbc16a29f"), 
+    "UM_distinctid" : "17d4ba99cd5c85-0caf13f6c6ecca-978183a-384000-17d4ba99cd6137f", 
+    "SESSION" : "NAN", 
+    "username" : "18482296139", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(3), 
+    "ip" : "218.89.242.33"
+}
+{ 
+    "_id" : ObjectId("61839982b6f519fdbc16a2a0"), 
+    "UM_distinctid" : "17d4c290f28161-0bc785c454a5ee-584c2d14-1fa400-17d4c290f296eb", 
+    "SESSION" : "c8fb4f27-2fd0-4a1a-8266-72bba1ecfd63", 
+    "username" : "18518251923", 
+    "inuse" : NumberInt(1), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.70"
+}
+{ 
+    "_id" : ObjectId("61839999b6f519fdbc16a2a1"), 
+    "UM_distinctid" : "17d4c3247de48d-04170e0a1b71a1-584c2d14-1fa400-17d4c3247df61b", 
+    "SESSION" : "232240c9-0cd2-40c1-9495-7299b5769a83", 
+    "username" : "13708232740", 
+    "inuse" : NumberInt(1), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.70"
+}
+{ 
+    "_id" : ObjectId("618399aab6f519fdbc16a2a2"), 
+    "UM_distinctid" : "17d4c0c5ac8b1-01a048245ad4b6-57b1a33-384000-17d4c0c5aca1310", 
+    "SESSION" : "e821d05d-eba3-40a6-b132-5caa4f02b826", 
+    "username" : "15910201753", 
+    "inuse" : NumberInt(1), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.33"
+}
+{ 
+    "_id" : ObjectId("618399bdb6f519fdbc16a2a3"), 
+    "UM_distinctid" : "17d5a4cca5978-05d75e03ddb77d-17291209-100200-17d5a4cca5a7a0", 
+    "SESSION" : "1efefb87-45e2-4873-8de4-4a55550d71f1", 
+    "username" : "13051958181", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(2), 
+    "ip" : "218.89.242.223"
+}
+{ 
+    "_id" : ObjectId("618399d0b6f519fdbc16a2a4"), 
+    "UM_distinctid" : "17d55517c56d64-0647181680c181-57b1a33-384000-17d55517c57ced", 
+    "SESSION" : "9edad5ec-fd11-4c11-99eb-fff2e39e0e4b", 
+    "username" : "13865388581", 
+    "inuse" : NumberInt(1), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.33"
+}
+{ 
+    "_id" : ObjectId("618399e4b6f519fdbc16a2a5"), 
+    "UM_distinctid" : "17d4f6cbd593ec-0a405ab57822dd-57b1a33-384000-17d4f6cbd5a1020", 
+    "SESSION" : "78bf13b0-ffb4-48e9-9dc4-37a76600912e", 
+    "username" : "13520432003", 
+    "inuse" : NumberInt(1), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.33"
+}
+{ 
+    "_id" : ObjectId("618399f8b6f519fdbc16a2a6"), 
+    "UM_distinctid" : "17d5a4d046a2c8-07af19f3a7bfcd-17291209-100200-17d5a4d046b686", 
+    "SESSION" : "864d42d6-6582-447a-92d9-ce66900b5a86", 
+    "username" : "13521916993", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(2), 
+    "ip" : "218.89.242.223"
+}
+{ 
+    "_id" : ObjectId("61839a0bb6f519fdbc16a2a7"), 
+    "UM_distinctid" : "17d4fb7c975fb1-02861d76d8a0e4-57b1a33-384000-17d4fb7c97611b1", 
+    "SESSION" : "c1398518-f0d9-4627-9a64-b8314c3f499b", 
+    "username" : "18365598693", 
+    "inuse" : NumberInt(1), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.33"
+}
+{ 
+    "_id" : ObjectId("61839a1fb6f519fdbc16a2a8"), 
+    "UM_distinctid" : "17d5a4d4b301ed-07556a8ff8d091-17291209-100200-17d5a4d4b32149", 
+    "SESSION" : "e7bb7d62-80c4-460f-ba6e-99dc3e688e0f", 
+    "username" : "13178847321", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.223"
+}
+{ 
+    "_id" : ObjectId("61839a33b6f519fdbc16a2a9"), 
+    "UM_distinctid" : "17d37d589d4125f-0718bf047d7ee5-57b1a33-384000-17d37d589d511f4", 
+    "SESSION" : "NAN", 
+    "username" : "15181658974", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(3)
+}
+{ 
+    "_id" : ObjectId("61839a46b6f519fdbc16a2aa"), 
+    "UM_distinctid" : "17d368620a727f-0a83392b8a1d5-57b1a33-384000-17d368620a81240", 
+    "SESSION" : "NAN", 
+    "username" : "18783920269", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(3)
+}
+{ 
+    "_id" : ObjectId("61839a5ab6f519fdbc16a2ab"), 
+    "UM_distinctid" : "17d5a47ce8b475-07367b64b0a61d-17291209-100200-17d5a47ce8c659", 
+    "SESSION" : "b0c06c52-809b-444b-94eb-515e8b499ecd", 
+    "username" : "17311681817", 
+    "inuse" : NumberInt(1), 
+    "status" : NumberInt(2), 
+    "ip" : "218.89.242.223"
+}
+{ 
+    "_id" : ObjectId("61839a6db6f519fdbc16a2ac"), 
+    "UM_distinctid" : "17d5a500003264-0a81725ebdf802-17291209-100200-17d5a5000046b1", 
+    "SESSION" : "c6ae3445-56db-4710-8aaa-fdb51505ed1f", 
+    "username" : "18683685986", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.223"
+}
+{ 
+    "_id" : ObjectId("61839a81b6f519fdbc16a2ad"), 
+    "UM_distinctid" : "17d5a4838a316f-017dfeb015f191-17291209-100200-17d5a4838a467f", 
+    "SESSION" : "d432cc01-9d35-4bc8-a8f1-3d3195c8ea60", 
+    "username" : "16659683555", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(2), 
+    "ip" : "218.89.242.223"
+}
+{ 
+    "_id" : ObjectId("61839a95b6f519fdbc16a2ae"), 
+    "UM_distinctid" : "17d38d0ff1064-0a0ed7ae342b5a-57b1a33-1fa400-17d38d0ff1113d", 
+    "SESSION" : "6bd4fce8-7609-4562-aa9d-c42b5274aa08", 
+    "username" : "13258178073", 
+    "inuse" : NumberInt(1), 
+    "status" : NumberInt(1)
+}
+{ 
+    "_id" : ObjectId("61839aaab6f519fdbc16a2af"), 
+    "UM_distinctid" : "17d5a4880ee1bc-09d28de3122fe1-17291209-100200-17d5a4880ef2ae", 
+    "SESSION" : "22d920e0-9b57-4524-a2a1-207f5021bbf0", 
+    "username" : "15313201716", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(2), 
+    "ip" : "218.89.242.223"
+}
+{ 
+    "_id" : ObjectId("61839abeb6f519fdbc16a2b0"), 
+    "UM_distinctid" : "17d5a506c62f6-063f2ada88539e-17291209-100200-17d5a506c635bf", 
+    "SESSION" : "803b2d2c-b38e-4b0a-8c5e-16a9495d4974", 
+    "username" : "15213395979", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.223"
+}
+{ 
+    "_id" : ObjectId("61839ad2b6f519fdbc16a2b1"), 
+    "UM_distinctid" : "17d36ae6802686-0bad9745135ea8-57b1a33-384000-17d36ae6803fac", 
+    "SESSION" : "NAN", 
+    "username" : "17823392367", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(3)
+}
+{ 
+    "_id" : ObjectId("61839ae6b6f519fdbc16a2b2"), 
+    "UM_distinctid" : "17d5a4f8817253-046e942bc4e0fe-17291209-100200-17d5a4f881866e", 
+    "SESSION" : "cf735c16-53d0-4bb9-89b6-55f71f33aa5c", 
+    "username" : "17695679042", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.223"
+}
+{ 
+    "_id" : ObjectId("61839afab6f519fdbc16a2b3"), 
+    "UM_distinctid" : "17d5a494b1d26b-01b3afdd84bb73-17291209-100200-17d5a494b1e618", 
+    "SESSION" : "d30a9319-78b9-4dcb-9cfe-f59ba3cb56ca", 
+    "username" : "18806132331", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(2), 
+    "ip" : "218.89.242.223"
+}
+{ 
+    "_id" : ObjectId("61839b0db6f519fdbc16a2b4"), 
+    "UM_distinctid" : "17d5a498052cd-0db5c8cdb3534-17291209-100200-17d5a4980536f0", 
+    "SESSION" : "47da19d3-669c-43b8-9ea4-cb75c091fd2d", 
+    "username" : "15583989067", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(2), 
+    "ip" : "218.89.242.223"
+}
+{ 
+    "_id" : ObjectId("61839b23b6f519fdbc16a2b5"), 
+    "UM_distinctid" : "17d5a2e73d47db-0988f7585f2ddb-57b1a33-384000-17d5a2e73d513d8", 
+    "SESSION" : "3435b11b-3759-4a73-b684-2bd71c19d835", 
+    "username" : "17882201891", 
+    "inuse" : NumberInt(1), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.33"
+}
+{ 
+    "_id" : ObjectId("61839b36b6f519fdbc16a2b6"), 
+    "UM_distinctid" : "17d5a49be191a-025c9b51e661e1-17291209-100200-17d5a49be1a787", 
+    "SESSION" : "16b349cd-7a6c-42fc-9efa-9325ffeb7e2f", 
+    "username" : "18780181922", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(2), 
+    "ip" : "218.89.242.223"
+}
+{ 
+    "_id" : ObjectId("61839b4bb6f519fdbc16a2b7"), 
+    "UM_distinctid" : "17d4cf0a2a8746-067b8de13c5d85-57b1a33-384000-17d4cf0a2a9bff", 
+    "SESSION" : "bd71ff06-6e7d-4184-a7b6-4965920a0b2e", 
+    "username" : "18113014402", 
+    "inuse" : NumberInt(1), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.33"
+}
+{ 
+    "_id" : ObjectId("61839b5eb6f519fdbc16a2b8"), 
+    "UM_distinctid" : "17d31bcd8291284-0ba05e8535751f-57b1a33-384000-17d31bcd82a225", 
+    "SESSION" : "NAN", 
+    "username" : "18848407161", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(3)
+}
+{ 
+    "_id" : ObjectId("61839b72b6f519fdbc16a2b9"), 
+    "UM_distinctid" : "17d5a49f1ed131-097a53801711e-17291209-100200-17d5a49f1ee620", 
+    "SESSION" : "1bf5a665-2392-4803-befe-3720f4ef4a48", 
+    "username" : "17380413583", 
+    "inuse" : NumberInt(1), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.223"
+}
+{ 
+    "_id" : ObjectId("61839b86b6f519fdbc16a2ba"), 
+    "UM_distinctid" : "17d5a4a3b71254-0a1f741560dc9d-17291209-100200-17d5a4a3b72715", 
+    "SESSION" : "add62905-e810-4c55-b9e8-5861d1425189", 
+    "username" : "18380407911", 
+    "inuse" : NumberInt(1), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.223"
+}
+{ 
+    "_id" : ObjectId("61839b9ab6f519fdbc16a2bb"), 
+    "UM_distinctid" : "17d5a4a67f1909-09392bedd97b9f-17291209-100200-17d5a4a67f26e3", 
+    "SESSION" : "12dd4414-8d3c-40f3-9f1e-c3d0abb9b4cf", 
+    "username" : "13997179673", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(2), 
+    "ip" : "218.89.242.223"
+}
+{ 
+    "_id" : ObjectId("61839bb0b6f519fdbc16a2bc"), 
+    "UM_distinctid" : "17d5a50395f419-098d0b1b8d2963-17291209-100200-17d5a50396069a", 
+    "SESSION" : "97c7d181-f34d-4fe2-b9bc-59a208fce1fb", 
+    "username" : "17360074852", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.223"
+}
+{ 
+    "_id" : ObjectId("61839bc5b6f519fdbc16a2bd"), 
+    "UM_distinctid" : "17d36566cd6294-0a01bf75874564-57b1a33-384000-17d36566cd7f83", 
+    "SESSION" : "NAN", 
+    "username" : "15902851175", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(3)
+}
+{ 
+    "_id" : ObjectId("61839bedb6f519fdbc16a2be"), 
+    "UM_distinctid" : "17d5a509be2581-0872ccbb1cf7b5-17291209-100200-17d5a509be372c", 
+    "SESSION" : "9cde23c6-fab1-4294-a966-13c65ea7db9f", 
+    "username" : "17740967187", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.223"
+}
+{ 
+    "_id" : ObjectId("61839c01b6f519fdbc16a2bf"), 
+    "UM_distinctid" : "17d5a3db95917-0fbe93645619-17291209-100200-17d5a3db95a747", 
+    "SESSION" : "NAN", 
+    "username" : "18628050723", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(3), 
+    "ip" : "218.89.242.223"
+}
+{ 
+    "_id" : ObjectId("61839c15b6f519fdbc16a2c0"), 
+    "UM_distinctid" : "17d5a4f23f52ba-0fbdc3e03ee029-17291209-100200-17d5a4f23f66f1", 
+    "SESSION" : "98b8dd7f-f25a-4ead-9c88-54f2c7696ff4", 
+    "username" : "13058583698", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.223"
+}
+{ 
+    "_id" : ObjectId("61839c29b6f519fdbc16a2c1"), 
+    "UM_distinctid" : "17d5a4b39af25c-05fbe34cecf8bc-17291209-100200-17d5a4b39b069e", 
+    "SESSION" : "5934cb16-c98e-4b93-b7ad-caedfec25318", 
+    "username" : "18926887416", 
+    "inuse" : NumberInt(1), 
+    "status" : NumberInt(2), 
+    "ip" : "218.89.242.223"
+}
+{ 
+    "_id" : ObjectId("61839c3db6f519fdbc16a2c2"), 
+    "UM_distinctid" : "17d5a4b81a724d-045bdd763cd8a1-17291209-100200-17d5a4b81a8d2", 
+    "SESSION" : "badc1b1b-a298-4b0a-9bf8-93324564b231", 
+    "username" : "19382134713", 
+    "inuse" : NumberInt(0), 
+    "status" : NumberInt(1), 
+    "ip" : "218.89.242.223"
+}
