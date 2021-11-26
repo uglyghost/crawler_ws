@@ -392,7 +392,7 @@ class wenshu_class_crawler:
         #     'X-Requested-With': 'XMLHttpRequest',
         #     'Sec-Fetch-Site': 'same-origin',
         # }
-        self.headers = {
+        self.headers = {    #linux header
             'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36',
             # 'User-Agent':  ua.random,
             'Host': 'wenshu.court.gov.cn',
