@@ -78,6 +78,7 @@ def check_and_uppdate(num):
 
     else: #超出可更新数，只更新可更新
         j=1
+        print('本次需更新数：{}'.format(count))
         for error in status_errors:
             print(error['status'],' ',error['inuse'],'\n',j,'/',count)
             password = database.get_user_passord(error['username'])
